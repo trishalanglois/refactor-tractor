@@ -7,19 +7,22 @@
   padding: 0;
 }
 
-body {
+%flex_center-shared {
   align-items: center;
-  background-color: $background_color;
   display: flex;
+}
+
+body {
+  @extend %flex_center-shared;
+  background-color: $background_color;
   flex-direction: column;
   font-family: 'Noto Sans SC', sans-serif;
 }
 
 nav {
-  align-items: center;
+  @extend %flex_center-shared;
   background-image: linear-gradient(white, #e2e2e2);
   color: #2b8b9e;
-  display: flex;
   font-size: $fontSize_18px;
   height: 70px;
   justify-content: center;
@@ -33,15 +36,13 @@ nav {
 }
 
 nav div {
-  align-items: center;
-  display: flex;
+  @extend %flex_center-shared;
   justify-content: space-between;
   width: 1100px;
 }
 
 header {
-  align-items: center;
-  display: flex;
+  @extend %flex_center-shared;
   justify-content: space-between;
   height: max-content;
   padding: 0 50px;
@@ -113,11 +114,10 @@ h3 {
 }
 
 .article--widget {
-  align-items: center;
+  @extend %flex_center-shared;
   background-color: $box_background;
   border-radius: 4px;
   box-shadow: 10px 10px 30px $shadow_color;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 350px;
@@ -244,8 +244,7 @@ h5 {
   }
 
 #step-trends {
-  align-items: center;
-  display: flex;
+  @extend %flex_center-shared;
   flex-direction: column;
   justify-content: space-evenly;
   height: 120px;
