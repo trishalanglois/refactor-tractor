@@ -21,9 +21,15 @@ nav {
   color: #2b8b9e;
   display: flex;
   font-size: $fontSize_18px;
-  height: 50px;
+  height: 70px;
   justify-content: center;
   width: 100%;
+    h1 {
+      font-size: 3.3em;
+    }
+    h6 {
+      font-size: $fontSize_20px;
+    }
 }
 
 nav div {
@@ -33,39 +39,35 @@ nav div {
   width: 1100px;
 }
 
-header ul {
-  background-color: #23586385;
-  border-radius: 3px;
-  margin-top: 10px;
-  padding: 10px;
-}
-
-h6 {
-  font-size: $fontSize_20px;
-}
-
 header {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: max-content;
   padding: 0 50px;
   width: 1200px;
+    h2 {
+      color: $accent_color;
+      font-size: 2.5em;
+      margin: 3px 0 0 0;
+    }
+    ul {
+      background-color: #23586385;
+      border-radius: 3px;
+      margin-top: 10px;
+      padding: 10px;
+    }
+      li {
+        margin-bottom: 6px;
+      }
+    p {
+      color: #dbdbdb;
+      font-size: $fontSize_20px;
+    }
 }
 
 #friend-list {
   color: $accent_color;
-}
-
-header p {
-  color: #dbdbdb;
-  font-size: $fontSize_18px;
-}
-
-h1 {
-  color: $accent_color;
-  font-size: 40px;
-  margin: 3px 0 0 0;
 }
 
 ul {
@@ -74,12 +76,13 @@ ul {
 
 li {
   color: #d4d4d4;
-  font-size: 80%;
+  font-size: 1em;
   font-weight: 700;
 }
 
 span {
   font-weight: 400;
+  margin-left: 5px;
 }
 
 main {
