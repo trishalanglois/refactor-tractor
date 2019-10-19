@@ -97,16 +97,13 @@ main {
   width: 100%;
 }
 
-.section__h3--title {
+h3 {
   background-color: $background_light_color;
   border-radius: 4px;
   box-shadow: 10px 10px 30px $shadow_color;
-  padding: 2px 8px;
-}
-
-h3 {
   color: $accent_color;
   margin-bottom: 12px;
+  padding: 2px 8px;
 }
 
 .widget--container {
