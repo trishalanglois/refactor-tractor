@@ -121,7 +121,7 @@ describe('ActivityRepository', () => {
   });
 
   it('should return the number of kilometers a user walked in a given date', () => {
-    expect(activityRepository.getDistanceWalked('2019/08/25', user, 'kilometers')).to.equal(9.2);
+    expect(activityRepository.getDistanceWalked('2019/08/25', user, 'kilometers')).to.equal(9.1);
   });
 
   it('should return the number of daily steps', () => {

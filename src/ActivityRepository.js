@@ -19,12 +19,12 @@ class ActivityRepository {
 
   getDistanceWalked(date, user, measurement) {
     const miles = (user.strideLength * this.getUserDate(date).numSteps) / 5280;
+    let kilometers = parseFloat((miles * 1.609).toFixed(1));
     if (measurement === 'miles') {
       return parseFloat(miles.toFixed(1));
     } else {
-        let fixedMiles = parseFloat(miles.toFixed(1));
-        return parseFloat((fixedMiles * 1.609).toFixed(1));
-    }
+        return parseFloat(kilometers.toFixed(1));
+      }
   }
 
   getMinutesActive(date) {
