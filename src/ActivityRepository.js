@@ -17,9 +17,14 @@ class ActivityRepository {
     return this.activityData.filter(log => log.date === date);
   }
 
-  getMilesWalked(date, user) {
+  getDistanceWalked(date, user, measurement) {
     const miles = (user.strideLength * this.getUserDate(date).numSteps) / 5280;
-    return parseFloat(miles.toFixed(1));
+    if (measurement === 'miles') {
+      return parseFloat(miles.toFixed(1));
+    } else {
+        let fixedMiles = parseFloat(miles.toFixed(1));
+        return parseFloat((fixedMiles * 1.609).toFixed(1));
+    }
   }
 
   getMinutesActive(date) {
@@ -69,11 +74,6 @@ class ActivityRepository {
       return total;
     }, 0);
     return Math.round(totalStat / filteredDate.length);
-  }
-
-  getKilometersWalked(date, user) {
-    const miles = this.getMilesWalked(date, user);
-    return parseFloat((miles * 1.609).toFixed(1));
   }
 
   getDailyStats(date, detail) {

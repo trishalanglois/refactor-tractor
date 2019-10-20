@@ -193,8 +193,8 @@ function displayBestSleepers() {
 function displayActivity() {
   const avgStepsDay = activityRepository.getDailyStats(getCurrentDate(), 'numSteps');
   const avgMinsDay = activityRepository.getMinutesActive(getCurrentDate());
-  const milesWalked = activityRepository.getMilesWalked(getCurrentDate(), userRepository.getUserData());
-  const kmWalked = activityRepository.getKilometersWalked(getCurrentDate(), userRepository.getUserData());
+  const milesWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'miles');
+  const kmWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'kilometers');
 
   $(`<h5>•<span>${avgStepsDay.toLocaleString()}</span> STEPS</h5>`).appendTo(dailyActivity);
   $(`<h5>•ACTIVE <span>${avgMinsDay}</span> MINS</h5>`).appendTo(dailyActivity);
