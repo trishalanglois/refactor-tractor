@@ -1,0 +1,56 @@
+@mixin xs { 
+    @media (min-width: #{$screen-xs-min}) {
+        // @include;
+    } 
+} // Tiny devices
+
+@mixin sm { 
+    @media (min-width: #{$screen-sm-min}) {
+        // @include;
+    } 
+} // Small devices
+
+@mixin md { 
+    @media (min-width: #{$screen-md-min}) {
+        // @include;
+    } 
+} // Medium devices
+
+@mixin lg { 
+    @media (min-width: #{$screen-lg-min}) {
+        // @include;
+    } 
+} // Large devices
+
+@mixin xl { 
+    @media (min-width: #{$screen-xl-min}) {
+        // @include;
+    } 
+} // extra large
+
+
+// extra-small devices
+// @media (min-width: 425px) {
+//     //   @include
+// }
+
+// // Small devices
+// @media (min-width: 576px) {
+// //   @include
+// }
+ 
+//  // Medium devices
+// @media (min-width: 768px) {
+//     // @include
+// }
+
+//  // Large devices
+// @media (min-width: 992px) {
+// //   @include
+// }
+ 
+ 
+ // Extra large devices
+@media (min-width: 1200px) {
+//   @include  
+}
