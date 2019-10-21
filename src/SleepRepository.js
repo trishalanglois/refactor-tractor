@@ -34,15 +34,9 @@ class SleepRepository {
     return this.user.slice(i - 6, i + 1);
   }
 
-  getWeeklyHours(date) {
+  getWeeklySleep(date, key) {
     return this.weeklySleepData(date).map(day => {
-      return { date: day.date, hoursSlept: day.hoursSlept };
-    });
-  }
-
-  getWeeklyQuality(date) {
-    return this.weeklySleepData(date).map(day => {
-      return { date: day.date, sleepQuality: day.sleepQuality };
+      return { date: day.date, [key]: day[key]};
     });
   }
 
