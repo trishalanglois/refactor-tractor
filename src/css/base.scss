@@ -1,5 +1,7 @@
 @import 'variables';
-@import 'mixins';
+@import 'media-queries';
+// @import 'mixins';
+
 
 * {
   box-sizing: border-box;
@@ -88,6 +90,9 @@ span {
 
 main {
   width: 1150px;
+    @include xl {
+      width: 100%;
+    }
 }
 
 .main__sections {
@@ -96,6 +101,13 @@ main {
   margin: 10px 0;
   padding: 0 2%;
   width: 100%;
+    @include lg {
+      margin-left: 20px;
+      width: 95%;
+    }
+    @include xl {
+      width: 100%;
+    }
 }
 
 h3 {
@@ -121,6 +133,15 @@ h3 {
   flex-direction: column;
   justify-content: space-between;
   width: 350px;
+    @include xl {
+      width: 32%;
+    }
+    @include lg {
+      width: 32%;
+    }
+    @include md {}
+    @include sm {}
+    @include xs {}
 }
 
 .steps__article--1 p {
