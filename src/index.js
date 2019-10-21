@@ -81,7 +81,7 @@ displayTrends();
 displaySleepChart()
 
 function updateUserDataDOM(userInfo) {
-  $(`<p>Welcome,</p><h1>${user.getFirstName()}</h1>`).prependTo(name);
+  $(`<p>Welcome,</p><h2>${user.getFirstName()}</h2>`).prependTo(name);
   address.text(userInfo.address);
   email.text(userInfo.email);
   strideLength.text(userInfo.strideLength);
@@ -202,9 +202,9 @@ function displayActivity() {
 }
 
 function displayAverageWeeklyActivity() {
-  const averageStairsDay = activityRepository.getAverageStairsDay(getCurrentDate());
-  const averageStepsDay = activityRepository.getAverageStepsDay(getCurrentDate());
-  const averageMinutesDay = activityRepository.getAvergageMinutesActive(getCurrentDate());
+  const averageStairsDay = activityRepository.getAverageDay(getCurrentDate(),'flightsOfStairs');
+  const averageStepsDay = activityRepository.getAverageDay(getCurrentDate(), 'numSteps');
+  const averageMinutesDay = activityRepository.getAverageDay(getCurrentDate(), 'minutesActive');
   const getDailyFlights = activityRepository.getDailyStats(getCurrentDate(), 'flightsOfStairs');
   const getDailySteps = activityRepository.getDailyStats(getCurrentDate(), 'numSteps');
   const getDailyMinutes = activityRepository.getDailyStats(getCurrentDate(), 'minutesActive');
