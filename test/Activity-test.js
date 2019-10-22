@@ -132,8 +132,8 @@ describe('getDailyStats', () => {
   it('should return the number of flights of stairs', () => {
     expect(activityRepository.getDailyStats('2019/08/25', 'flightsOfStairs')).to.equal(143);
   })
-  it('should return the number of flights of stairs', () => {
-    expect(activityRepository.getDailyStats('2019/08/25', 'flightsOfStairs')).to.equal(143);
+  it('should return the number of minutes active on a given day', () => {
+    expect(activityRepository.getDailyStats('2019/08/25', 'minutesActive')).to.equal(567);
   })
 });
   //minutes active
