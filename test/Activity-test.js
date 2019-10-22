@@ -124,9 +124,20 @@ describe('ActivityRepository', () => {
     expect(activityRepository.getKilometersWalked('2019/08/25', user)).to.equal(9.2);
   });
 
+describe('getDailyStats', () => {
+
   it('should return the number of daily steps', () => {
     expect(activityRepository.getDailyStats('2019/08/25', 'numSteps')).to.equal(9352);
-  });
+  })
+  it('should return the number of flights of stairs', () => {
+    expect(activityRepository.getDailyStats('2019/08/25', 'flightsOfStairs')).to.equal(143);
+  })
+  it('should return the number of flights of stairs', () => {
+    expect(activityRepository.getDailyStats('2019/08/25', 'flightsOfStairs')).to.equal(143);
+  })
+});
+  //minutes active
+  //stairs climbed
 
   it('should return the user"s weekly stats', () => {
     expect(activityRepository.getWeeklyStats('2019/08/25')).to.deep.equal(
