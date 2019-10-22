@@ -85,8 +85,8 @@ class ActivityRepository {
     return this.user.slice(index - 6, index + 1);
   }
 
-  getStepTrends(type) {
-    if (type === 'positive') {
+  getStepTrends(trendDirection) {
+    if (trendDirection === 'positive') {
       return this.user.reduce((acc, day, index) => {
         if (index < 2) {
           return acc;
