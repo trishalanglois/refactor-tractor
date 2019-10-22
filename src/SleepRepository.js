@@ -9,20 +9,12 @@ class SleepRepository {
     return this.sleepData.filter(user => user.userID === this.id);
   }
 
-  getAllTimeAvg() {
-    const totalHrs = this.user.reduce((totalHours, day) => {
-      totalHours += day.hoursSlept;
-      return totalHours;
+  getAllTimeAvg(key) {
+    const total = this.user.reduce((total, day) => {
+      total += day[key];
+      return total;
     }, 0);
-    return Math.round(totalHrs / this.user.length);
-  }
-
-  getQualitySleepAvg() {
-    const sleepQualAvg = this.user.reduce((sleepQual, day) => {
-      sleepQual += day.sleepQuality;
-      return sleepQual;
-    }, 0);
-    return parseFloat((sleepQualAvg / this.user.length).toFixed(1));
+    return parseFloat((total / this.user.length).toFixed(1));
   }
 
   getDailySleepHours(date) {

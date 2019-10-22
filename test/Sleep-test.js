@@ -82,11 +82,11 @@ describe('SleepRepository', () => {
   });
 
   it('should return the user"s average number of hours slept per day', () => {
-    expect(sleepRepository.getAllTimeAvg()).to.equal(9);
+    expect(sleepRepository.getAllTimeAvg('hoursSlept')).to.equal(8.6);
   });
 
   it('should return the user"s average sleep quality per day over all time', () => {
-    expect(sleepRepository.getQualitySleepAvg()).to.equal(2.9);
+    expect(sleepRepository.getAllTimeAvg('sleepQuality')).to.equal(2.9);
   });
 
   it('should return how many hours the user slept for a specific day', () => {
