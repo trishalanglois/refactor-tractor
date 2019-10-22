@@ -108,16 +108,18 @@ describe('ActivityRepository', () => {
     );
   });
 
-  it('should return the average number of stairs climbed for all users on a given date', () => {
-    expect(activityRepository.getAverageDay('2019/08/25', 'flightsOfStairs')).to.equal(90);
-  });
+  describe('getAverageDay', () => {
+    it('should return the average number of stairs climbed for all users on a given date', () => {
+      expect(activityRepository.getAverageDay('2019/08/25', 'flightsOfStairs')).to.equal(90);
+    });
 
-  it('should return the average number of steps taken for all users on a given date', () => {
-    expect(activityRepository.getAverageDay('2019/08/25', 'numSteps')).to.equal(5540);
-  });
+    it('should return the average number of steps taken for all users on a given date', () => {
+      expect(activityRepository.getAverageDay('2019/08/25', 'numSteps')).to.equal(5540);
+    });
 
-  it('should return the average number of minutes active for all users on a given date', () => {
-    expect(activityRepository.getAverageDay('2019/08/25', 'minutesActive')).to.equal(226);
+    it('should return the average number of minutes active for all users on a given date', () => {
+      expect(activityRepository.getAverageDay('2019/08/25', 'minutesActive')).to.equal(226);
+    });
   });
 
   it('should return the number of kilometers a user walked in a given date', () => {
@@ -142,10 +144,10 @@ describe('ActivityRepository', () => {
   });
 
   it('should return the positive trend dates', () => {
-    expect(activityRepository.getStepTrends('positive')).to.deep.equal(['2019/08/20', '2019/08/23'])
+    expect(activityRepository.getPositiveStepTrends()).to.deep.equal(['2019/08/20', '2019/08/23'])
   });
 
   it('should return the negative trend dates', () => {
-    expect(activityRepository.getStepTrends('negative')).to.deep.equal([]);
+    expect(activityRepository.getNegativeStepTrends()).to.deep.equal([]);
   });
 });
