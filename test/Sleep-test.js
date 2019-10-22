@@ -108,7 +108,7 @@ describe('SleepRepository', () => {
   });
 
   it('should return the number of hours slept each day over the course of a given week', () => {
-    expect(sleepRepository.getWeeklyHours('2019/08/22')).to.deep.equal(
+    expect(sleepRepository.getWeeklySleep('2019/08/22', 'hoursSlept')).to.deep.equal(
       [
         { date: "2019/08/16", hoursSlept: 9.9 },
         { date: "2019/08/17", hoursSlept: 6.9 },
@@ -122,7 +122,7 @@ describe('SleepRepository', () => {
   });
 
   it('should return the sleep quality each day over the course of a given week', () => {
-    expect(sleepRepository.getWeeklyQuality('2019/08/22')).to.deep.equal(
+    expect(sleepRepository.getWeeklySleep('2019/08/22', 'sleepQuality')).to.deep.equal(
       [
         { date: "2019/08/16", sleepQuality: 2.8 },
         { date: "2019/08/17", sleepQuality: 4.5 },

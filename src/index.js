@@ -193,8 +193,8 @@ function displayBestSleepers() {
 function displayActivity() {
   const avgStepsDay = activityRepository.getDailyStats(getCurrentDate(), 'numSteps');
   const avgMinsDay = activityRepository.getMinutesActive(getCurrentDate());
-  const milesWalked = activityRepository.getMilesWalked(getCurrentDate(), userRepository.getUserData());
-  const kmWalked = activityRepository.getKilometersWalked(getCurrentDate(), userRepository.getUserData());
+  const milesWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'miles');
+  const kmWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'kilometers');
 
   $(`<h5 lang="en">•<span>${avgStepsDay.toLocaleString()}</span> STEPS</h5>`).appendTo(dailyActivity);
   $(`<h5 lang="en">•ACTIVE <span>${avgMinsDay}</span> MINS</h5>`).appendTo(dailyActivity);
@@ -277,8 +277,8 @@ function displayFriendSteps(array) {
 }
 
 function displayTrends() {
-  let positiveTrend = activityRepository.getPositiveStepTrends().length;
-  let negativeTrend = activityRepository.getNegativeStepTrends().length;
+  let positiveTrend = activityRepository.getStepTrends('positive').length;
+  let negativeTrend = activityRepository.getStepTrends('negative').length;
   $(`<p lang="en">Since joining you've had:</p> <p><span>${positiveTrend}</span> positive trends</p>`).appendTo(stepTrends);
   $(`<p lang="en"><span>${negativeTrend}</span> negative trends</p>`).appendTo(stepTrends);
 }

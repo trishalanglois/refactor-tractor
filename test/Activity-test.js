@@ -78,7 +78,7 @@ describe('ActivityRepository', () => {
   });
 
   it('should return miles user has walked from their number of steps and stride length', () => {
-    expect(activityRepository.getMilesWalked('2019/08/25', user)).to.equal(5.7);
+    expect(activityRepository.getDistanceWalked('2019/08/25', user, 'miles')).to.equal(5.7);
   });
 
   it('should return how many minutes the user was active for a given day', () => {
@@ -121,7 +121,7 @@ describe('ActivityRepository', () => {
   });
 
   it('should return the number of kilometers a user walked in a given date', () => {
-    expect(activityRepository.getKilometersWalked('2019/08/25', user)).to.equal(9.2);
+    expect(activityRepository.getDistanceWalked('2019/08/25', user, 'kilometers')).to.equal(9.1);
   });
 
 describe('getDailyStats', () => {
@@ -151,10 +151,10 @@ describe('getDailyStats', () => {
   });
 
   it('should return the positive trend dates', () => {
-    expect(activityRepository.getPositiveStepTrends()).to.deep.equal(['2019/08/20', '2019/08/23'])
+    expect(activityRepository.getStepTrends('positive')).to.deep.equal(['2019/08/20', '2019/08/23'])
   });
 
   it('should return the negative trend dates', () => {
-    expect(activityRepository.getNegativeStepTrends()).to.deep.equal([]);
+    expect(activityRepository.getStepTrends('negative')).to.deep.equal([]);
   });
 });
