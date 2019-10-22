@@ -143,8 +143,8 @@ function displayWeeklyOz() {
 }
 
 function displaySleep() {
-  const userLogsHours = sleepRepository.getAllTimeAvg();
-  const userLogsQuality = sleepRepository.getQualitySleepAvg();
+  const userLogsHours = sleepRepository.getAllTimeAvg('hoursSlept');
+  const userLogsQuality = sleepRepository.getAllTimeAvg('sleepQuality');
   const lastNightSleep = sleepRepository.getDailySleepHours(getCurrentDate());
   const avgWeeklySleep = sleepRepository.weeklyAvgHours(getCurrentDate());
 
@@ -277,8 +277,8 @@ function displayFriendSteps(array) {
 }
 
 function displayTrends() {
-  let positiveTrend = activityRepository.getStepTrends('positive').length;
-  let negativeTrend = activityRepository.getStepTrends('negative').length;
+  let positiveTrend = activityRepository.getPositiveStepTrends().length;
+  let negativeTrend = activityRepository.getNegativeStepTrends().length;
   $(`<p lang="en">Since joining you've had:</p> <p><span>${positiveTrend}</span> positive trends</p>`).appendTo(stepTrends);
   $(`<p lang="en"><span>${negativeTrend}</span> negative trends</p>`).appendTo(stepTrends);
 }
