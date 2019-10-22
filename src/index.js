@@ -272,7 +272,7 @@ function displayFriendSteps(array) {
   array.sort((a, b) => b.weeklySteps - a.weeklySteps);
   array.forEach(friend => {
     counter++
-    $(`<li class="friend-${counter}" lang="en">${counter}. <span>${friend.name}</span> <br> --- ${friend.weeklySteps.toLocaleString()} steps.</li>`).appendTo(friendSteps);
+    $(`<li class="friend-${counter}" lang="en">${counter}. <span>${friend.name}</span> <br> ${friend.weeklySteps.toLocaleString()} steps.</li>`).appendTo(friendSteps);
   })
 }
 
