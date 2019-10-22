@@ -1,8 +1,8 @@
 class Stats {
-  constructor(id, user, data) {
+  constructor(id, data) {
     this.id = id;
-    this.user = user;
     this.data = data;
+    this.user = this.getData();
   }
   getData(id = this.id) {
     return this.data.filter(user => user.userID === id);
