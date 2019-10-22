@@ -136,8 +136,6 @@ describe('getDailyStats', () => {
     expect(activityRepository.getDailyStats('2019/08/25', 'minutesActive')).to.equal(567);
   })
 });
-  //minutes active
-  //stairs climbed
 
   it('should return the user"s weekly stats', () => {
     expect(activityRepository.getWeeklyStats('2019/08/25')).to.deep.equal(
