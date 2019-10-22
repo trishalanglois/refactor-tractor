@@ -143,8 +143,8 @@ function displayWeeklyOz() {
 }
 
 function displaySleep() {
-  const userLogsHours = sleepRepository.getAllTimeAvg();
-  const userLogsQuality = sleepRepository.getQualitySleepAvg();
+  const userLogsHours = sleepRepository.getAllTimeAvg('hoursSlept');
+  const userLogsQuality = sleepRepository.getAllTimeAvg('sleepQuality');
   const lastNightSleep = sleepRepository.getDailySleepHours(getCurrentDate());
   const avgWeeklySleep = sleepRepository.weeklyAvgHours(getCurrentDate());
 
