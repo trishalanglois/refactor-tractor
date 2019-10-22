@@ -81,7 +81,7 @@ displayTrends();
 displaySleepChart()
 
 function updateUserDataDOM(userInfo) {
-  $(`<p>Welcome,</p><h2>${user.getFirstName()}</h2>`).prependTo(name);
+  $(`<p>Welcome,</p><h1 id='welcome-name'>${user.getFirstName()}</h1>`).prependTo(name);
   address.text(userInfo.address);
   email.text(userInfo.email);
   strideLength.text(userInfo.strideLength);
@@ -272,7 +272,7 @@ function displayFriendSteps(array) {
   array.sort((a, b) => b.weeklySteps - a.weeklySteps);
   array.forEach(friend => {
     counter++
-    $(`<li class="friend-${counter}" lang="en">${counter}. <span>${friend.name}</span> <br> --- ${friend.weeklySteps.toLocaleString()} steps.</li>`).appendTo(friendSteps);
+    $(`<li class="friend-${counter}" lang="en">${counter}. <span>${friend.name}</span> <br> ${friend.weeklySteps.toLocaleString()} steps.</li>`).appendTo(friendSteps);
   })
 }
 
