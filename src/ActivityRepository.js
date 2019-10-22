@@ -85,33 +85,31 @@ class ActivityRepository {
     return this.user.slice(index - 6, index + 1);
   }
 
-  getStepTrends(type) {
-    if (type === 'positive') {
-      return this.user.reduce((acc, day, index) => {
-        if (index < 2) {
-          return acc;
-        }
-        if ((day.numSteps > this.user[index - 1].numSteps) &&
-          (this.user[index - 1].numSteps > this.user[index - 2].numSteps)) {
-          acc.push(day.date);
-        }
+  getPositiveStepTrends() {
+    return this.user.reduce((acc, day, index) => {
+      if (index < 2) {
         return acc;
-      }, []);
-    } else {
-      return this.user.reduce((acc, day, index) => {
-        if (index < 2) {
-          return acc;
-        }
-        if ((day.numSteps < this.user[index - 1].numSteps) &&
-          (this.user[index - 1].numSteps < this.user[index - 2].numSteps)) {
-          acc.push(day.date);
-        }
-        return acc;
-        }, []);
       }
-    }
+      if ((day.numSteps > this.user[index - 1].numSteps) &&
+        (this.user[index - 1].numSteps > this.user[index - 2].numSteps)) {
+        acc.push(day.date);
+      }
+      return acc;
+    }, []);
   }
 
-
+  getNegativeStepTrends() {
+    return this.user.reduce((acc, day, index) => {
+      if (index < 2) {
+        return acc;
+      }
+      if ((day.numSteps < this.user[index - 1].numSteps) &&
+        (this.user[index - 1].numSteps < this.user[index - 2].numSteps)) {
+        acc.push(day.date);
+      }
+      return acc;
+    }, []);
+  }
+}
 
 export default ActivityRepository;
