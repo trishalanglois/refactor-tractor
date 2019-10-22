@@ -78,7 +78,7 @@ describe('ActivityRepository', () => {
   });
 
   it('should return miles user has walked from their number of steps and stride length', () => {
-    expect(activityRepository.getMilesWalked('2019/08/25', user)).to.equal(5.7);
+    expect(activityRepository.getDistanceWalked('2019/08/25', user, 'miles')).to.equal(5.7);
   });
 
   it('should return how many minutes the user was active for a given day', () => {
@@ -121,7 +121,7 @@ describe('ActivityRepository', () => {
   });
 
   it('should return the number of kilometers a user walked in a given date', () => {
-    expect(activityRepository.getKilometersWalked('2019/08/25', user)).to.equal(9.2);
+    expect(activityRepository.getDistanceWalked('2019/08/25', user, 'kilometers')).to.equal(9.1);
   });
 
   it('should return the number of daily steps', () => {
