@@ -41,12 +41,21 @@ $(document).ready(() => {
   $('header').hide()
   $('main').hide()
 
-  $('.splash__button').click(()  => {
+$('.splash__input--user').keyup((e) => {
+  e.preventDefault();
+  if ($('.splash__input--user').val() !== '') {
+    $('.splash__button').prop('disabled', false);  
+  }
+})
+
+
+$('.splash__button').on('click', (e) => {
     $('.splash__container').hide();
     $('nav').show();
     $('header').show();
     $('main').show();
-  });
+  e.preventDefault();
+});
 
 const weeklyStepsChart = $('#weekly-steps-chart');
 const weeklyMinutesChart = $('#weekly-minutes-chart');
@@ -76,14 +85,6 @@ const hydrationRepository = new HydrationRepository(hydrationData, randomId);
 const sleepRepository = new SleepRepository(sleepData, randomId);
 const activityRepository = new ActivityRepository(randomId, activityData);
 const user = new User(userRepository.getUserData());
-
-
-$('.splash__input--user').keyup((e) => {
-  e.preventDefault();
-  if ($('.splash__input--user').val() !== '') {
-    $('.splash__button').prop('disabled', false);  
-  }
-})
 
 
 

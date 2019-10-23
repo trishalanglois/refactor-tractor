@@ -22,11 +22,56 @@ body {
 }
 
 .splash__container {
+  align-items: center;
+  background-color: $background_light_color;
   display: flex;
-  width: 80%;
+  flex-direction: column;
   height: 80vh;
-  background-color: aqua;
-  z-index: 3;
+  width: 80%;
+}
+
+.splash__h1 {
+  color: white;
+  display: block;
+  font-size: 3em;
+  margin: auto;
+}
+
+.splash__form--user {
+  align-items: center;
+  border-radius: 3px;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  margin: auto;
+  text-align: center;
+  width: 45%;
+}
+
+%formstyle {
+  display: block;
+  height: 28px;
+  margin-bottom: 4%;
+  // margin: auto;
+  width: 40%;
+}
+  
+.splash__label--user {
+  @extend %formstyle;
+  color: $background_color;
+  font-size: $bodySizeMedium;
+}
+
+.splash__input--user {
+  @extend %formstyle;
+}
+
+.splash__button {
+  @extend %formstyle;
+  color: $box_background;
+  background-color: $background_light_color;
+  height: 20px;
 }
 
 nav {
