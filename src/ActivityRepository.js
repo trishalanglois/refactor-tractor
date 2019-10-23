@@ -1,12 +1,13 @@
-class ActivityRepository {
-  constructor(id, activityData) {
+class ActivityRepository extends Stats {
+  constructor(id, data) {
+    super(id, data);
     this.id = id;
-    this.activityData = activityData;
-    this.user = this.getUserLogs(id);
+    this.data = activityData;
+    this.user = this.getUserLogs();
   }
 
-  getUserLogs(id) {
-    return this.activityData.filter(user => user.userID === id);
+  getUserLogs() {
+    return this.activityData.filter(user => user.userID === this.id);
   }
 
   getUserDate(date) {
