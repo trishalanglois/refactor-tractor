@@ -21,6 +21,14 @@ body {
   font-family: 'Noto Sans SC', sans-serif;
 }
 
+.splash__container {
+  display: flex;
+  width: 80%;
+  height: 80vh;
+  background-color: aqua;
+  z-index: 3;
+}
+
 nav {
   @extend %flex_center-shared;
   background-image: linear-gradient(white, #e2e2e2);
