@@ -108,16 +108,18 @@ describe('ActivityRepository', () => {
     );
   });
 
-  it('should return the average number of stairs climbed for all users on a given date', () => {
-    expect(activityRepository.getAverageDay('2019/08/25', 'flightsOfStairs')).to.equal(90);
-  });
+  describe('getAverageDay', () => {
+    it('should return the average number of stairs climbed for all users on a given date', () => {
+      expect(activityRepository.getAverageDay('2019/08/25', 'flightsOfStairs')).to.equal(90);
+    });
 
-  it('should return the average number of steps taken for all users on a given date', () => {
-    expect(activityRepository.getAverageDay('2019/08/25', 'numSteps')).to.equal(5540);
-  });
+    it('should return the average number of steps taken for all users on a given date', () => {
+      expect(activityRepository.getAverageDay('2019/08/25', 'numSteps')).to.equal(5540);
+    });
 
-  it('should return the average number of minutes active for all users on a given date', () => {
-    expect(activityRepository.getAverageDay('2019/08/25', 'minutesActive')).to.equal(226);
+    it('should return the average number of minutes active for all users on a given date', () => {
+      expect(activityRepository.getAverageDay('2019/08/25', 'minutesActive')).to.equal(226);
+    });
   });
 
   it('should return the number of kilometers a user walked in a given date', () => {
