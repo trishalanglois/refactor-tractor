@@ -1,12 +1,13 @@
-class SleepRepository {
-  constructor(sleepData, id) {
-    this.sleepData = sleepData;
+class SleepRepository extends Stats {
+  constructor(id, data) {
+    super(id, data);
+    this.data = data;
     this.id = id;
     this.user = this.getSleepData();
   }
 
   getSleepData() {
-    return this.sleepData.filter(user => user.userID === this.id);
+    return this.data.filter(user => user.userID === this.id);
   }
 
   getAllTimeAvg(key) {
