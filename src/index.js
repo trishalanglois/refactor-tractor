@@ -247,6 +247,19 @@ function displayWeeklyActivity() {
   activityChart(weeklyFlightsChart, '#293462', flightLogs);
 }
 
+function fetchData(datatype) {
+  const urls = {
+    userData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData',
+    sleepData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData',
+    hydrationData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData',
+    activityData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData'
+  }
+  fetch(urls[datatype]).then(response => response.json()).then(data => data[datatype])
+  .catch(error => console.log(error));
+}
+
+fetchData();
+
 function friendActivityData(date) {
   let friends = [];
   let findFriends = userRepository.getFriends();

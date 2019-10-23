@@ -1,5 +1,6 @@
-class HydrationRepository {
-  constructor(data, id) {
+class HydrationRepository extends Stats {
+  constructor(id, data) {
+    super(id, data);
     this.data = data;
     this.id = id;
     this.user = this.getHydrationData();
