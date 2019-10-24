@@ -11,10 +11,6 @@ import ActivityRepository from './ActivityRepository';
 import HydrationRepository from './HydrationRepository';
 import SleepRepository from './SleepRepository';
 
-import userData from './data/users';
-import sleepData from './data/sleep';
-import hydrationData from './data/hydration';
-import activityData from './data/activity';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -35,19 +31,37 @@ import './images/trend-icon.png'
 import './images/water-icon.png'
 
   
-  let user = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json());
-  let sleep = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json());
-  let hydration = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json());
-  let activity = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json());
+  let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData)
+  // console.log(userData)
+  let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData)
+  let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json()).then(json => json.hydrationData)
+  let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
 
- Promise.all([user, sleep, hydration, activity])
-  .then(data => console.log(data))
-  .catch(error => console.log(error));
+  let randomId, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
+  
+ Promise.all([userData, sleepData, hydrationData, activityData])
+  .then(data => {
+    userData = data[0];
+    sleepData = data[1];
+    hydrationData = data[2];
+    activityData = data[3];
+  })
+
+  .then(data => {
+    randomId = Math.floor(Math.random() * (50 - 1) + 1);
+    stats = new Stats(userData, randomId);
+    userRepository = new UserRepository(userData, randomId);
+    hydrationRepository = new HydrationRepository(hydrationData, randomId);
+    sleepRepository = new SleepRepository(sleepData, randomId);
+    activityRepository = new ActivityRepository(activityData, randomId);
+    user = new User(userRepository.getUserData());
+    startApp()
+  })
+  .catch(error => console.log(error))
+    
 
 
-// fetchData();
-
-const startApp = () => {
+function startApp() {
   updateUserDataDOM(userRepository.getUserData());
   compareStepGoal(userRepository.getUserData());
   displayDailyOz();
@@ -63,7 +77,8 @@ const startApp = () => {
   displaySleepChart()
 }
 
-startApp()
+// startApp()
+
 console.log('This is the JavaScript entry file - your code begins here.');
 
 $(document).ready(() => {
@@ -108,13 +123,7 @@ const stepTrends = $('#step-trends');
 const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
 
-const randomId = Math.floor(Math.random() * (50 - 1) + 1);
-const stats = new Stats(userData[0], randomId, fetchData('userData'));
-const userRepository = new UserRepository(userData, randomId);
-const hydrationRepository = new HydrationRepository(hydrationData, randomId);
-const sleepRepository = new SleepRepository(sleepData, randomId);
-const activityRepository = new ActivityRepository(randomId, activityData);
-const user = new User(userRepository.getUserData());
+
 
 
 function updateUserDataDOM(userInfo) {
