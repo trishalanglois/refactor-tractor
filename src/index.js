@@ -11,10 +11,6 @@ import ActivityRepository from './ActivityRepository';
 import HydrationRepository from './HydrationRepository';
 import SleepRepository from './SleepRepository';
 
-import userData from './data/users';
-import sleepData from './data/sleep';
-import hydrationData from './data/hydration';
-import activityData from './data/activity';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -34,6 +30,54 @@ import './images/step-icon.png'
 import './images/trend-icon.png'
 import './images/water-icon.png'
 
+  
+  let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData)
+  // console.log(userData)
+  let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData)
+  let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json()).then(json => json.hydrationData)
+  let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
+
+  let randomId, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
+  
+ Promise.all([userData, sleepData, hydrationData, activityData])
+  .then(data => {
+    userData = data[0];
+    sleepData = data[1];
+    hydrationData = data[2];
+    activityData = data[3];
+  })
+
+  .then(data => {
+    randomId = Math.floor(Math.random() * (50 - 1) + 1);
+    stats = new Stats(userData, randomId);
+    userRepository = new UserRepository(userData, randomId);
+    hydrationRepository = new HydrationRepository(hydrationData, randomId);
+    sleepRepository = new SleepRepository(sleepData, randomId);
+    activityRepository = new ActivityRepository(activityData, randomId);
+    user = new User(userRepository.getUserData());
+    startApp()
+  })
+  .catch(error => console.log(error))
+    
+
+
+function startApp() {
+  updateUserDataDOM(userRepository.getUserData());
+  compareStepGoal(userRepository.getUserData());
+  displayDailyOz();
+  displayWeeklyOz();
+  displayBestSleepers();
+  displayCurrentDate(getCurrentDate());
+  displaySleep();
+  displayActivity();
+  displayAverageWeeklyActivity();
+  displayWeeklyActivity();
+  friendActivityData(getCurrentDate());
+  displayTrends();
+  displaySleepChart()
+}
+
+// startApp()
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -48,7 +92,6 @@ $('.splash__input--user').keyup((e) => {
     $('.splash__button').prop('disabled', false);  
   }
 })
-
 
 $('.splash__button').on('click', (e) => {
     $('.splash__container').hide();
@@ -80,29 +123,8 @@ const stepTrends = $('#step-trends');
 const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
 
-const randomId = Math.floor(Math.random() * (50 - 1) + 1);
-const stats = new Stats(randomId, fetchData('userData'));
-const userRepository = new UserRepository(userData, randomId);
-const hydrationRepository = new HydrationRepository(hydrationData, randomId);
-const sleepRepository = new SleepRepository(sleepData, randomId);
-const activityRepository = new ActivityRepository(randomId, activityData);
-const user = new User(userRepository.getUserData());
 
 
-
-updateUserDataDOM(userRepository.getUserData());
-compareStepGoal(userRepository.getUserData());
-displayDailyOz();
-displayWeeklyOz();
-displayBestSleepers();
-displayCurrentDate(getCurrentDate());
-displaySleep();
-displayActivity();
-displayAverageWeeklyActivity();
-displayWeeklyActivity();
-friendActivityData(getCurrentDate());
-displayTrends();
-displaySleepChart()
 
 function updateUserDataDOM(userInfo) {
   $(`<p>Welcome,</p><h1 id='welcome-name'>${user.getFirstName()}</h1>`).prependTo(name);
@@ -270,19 +292,6 @@ function displayWeeklyActivity() {
   activityChart(weeklyMinutesChart, '#00818a', minuteLogs);
   activityChart(weeklyFlightsChart, '#293462', flightLogs);
 }
-
-function fetchData(datatype) {
-  const urls = {
-    userData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData',
-    sleepData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData',
-    hydrationData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData',
-    activityData: 'https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData'
-  }
-  fetch(urls[datatype]).then(response => response.json()).then(data => data[datatype])
-  .catch(error => console.log(error));
-}
-
-fetchData();
 
 function friendActivityData(date) {
   let friends = [];
