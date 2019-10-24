@@ -1,3 +1,5 @@
+import Stats from '../src/Stats';
+
 class HydrationRepository extends Stats {
   constructor(id, data) {
     super(id, data);

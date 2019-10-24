@@ -4,6 +4,7 @@
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
 
+import Stats from './Stats';
 import User from './User';
 import UserRepository from './UserRepository';
 import ActivityRepository from './ActivityRepository';
@@ -80,6 +81,7 @@ const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
 
 const randomId = Math.floor(Math.random() * (50 - 1) + 1);
+const stats = new Stats(randomId, fetchData('userData'));
 const userRepository = new UserRepository(userData, randomId);
 const hydrationRepository = new HydrationRepository(hydrationData, randomId);
 const sleepRepository = new SleepRepository(sleepData, randomId);

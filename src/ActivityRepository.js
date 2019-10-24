@@ -1,3 +1,5 @@
+import Stats from '../src/Stats';
+
 class ActivityRepository extends Stats {
   constructor(id, data) {
     super(id, data);
@@ -78,7 +80,7 @@ class ActivityRepository extends Stats {
   }
 
   getDailyStats(date, detail) {
-    return this.getUserDate(date)[detail];
+    return this.getUserDate(date)([detail]);
   }
 
   getWeeklyStats(date) {
