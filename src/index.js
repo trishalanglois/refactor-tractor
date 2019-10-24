@@ -4,6 +4,7 @@
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
 
+import Stats from './Stats';
 import User from './User';
 import UserRepository from './UserRepository';
 import ActivityRepository from './ActivityRepository';
@@ -36,6 +37,26 @@ import './images/water-icon.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
+$(document).ready(() => {
+  $('nav').hide()
+  $('header').hide()
+  $('main').hide()
+
+$('.splash__input--user').keyup((e) => {
+  e.preventDefault();
+  if ($('.splash__input--user').val() !== '') {
+    $('.splash__button').prop('disabled', false);  
+  }
+})
+
+
+$('.splash__button').on('click', (e) => {
+    $('.splash__container').hide();
+    $('nav').show();
+    $('header').show();
+    $('main').show();
+  e.preventDefault();
+});
 
 const weeklyStepsChart = $('#weekly-steps-chart');
 const weeklyMinutesChart = $('#weekly-minutes-chart');
@@ -60,11 +81,14 @@ const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
 
 const randomId = Math.floor(Math.random() * (50 - 1) + 1);
+const stats = new Stats(randomId, fetchData('userData'));
 const userRepository = new UserRepository(userData, randomId);
 const hydrationRepository = new HydrationRepository(hydrationData, randomId);
 const sleepRepository = new SleepRepository(sleepData, randomId);
 const activityRepository = new ActivityRepository(randomId, activityData);
 const user = new User(userRepository.getUserData());
+
+
 
 updateUserDataDOM(userRepository.getUserData());
 compareStepGoal(userRepository.getUserData());
@@ -95,8 +119,8 @@ function compareStepGoal(userInfo) {
   const stepsToday = activityRepository.getDailyStats(getCurrentDate(), 'numSteps');
   const numSteps = Math.abs(dailyStepGoal - stepsToday);
   stepsToday <= dailyStepGoal
-    ? stepCompare.append(`<h5 lang="en">${numSteps.toLocaleString()} steps until you reach your goal!</h5>`)
-    : stepCompare.append(`<h5 lang="en">You've reached your daily goal!<h5>`)
+    ? stepCompare.append(`<h5>${numSteps.toLocaleString()} steps until you reach your goal!</h5>`)
+    : stepCompare.append(`<h5>You've reached your daily goal!<h5>`)
 
   new Chart(stepGoalChart, {
     type: 'doughnut',
@@ -116,7 +140,7 @@ function compareStepGoal(userInfo) {
 
 function displayDailyOz() {
   const waterDrank = hydrationRepository.totalOzDay(getCurrentDate());
-  $(`<h5 lang="en">You have drank <span>${waterDrank}</span> oz today!</h5>`).appendTo(dailyOz);
+  $(`<h5>You have drank <span>${waterDrank}</span> oz today!</h5>`).appendTo(dailyOz);
 }
 
 function displayWeeklyOz() {
@@ -148,11 +172,11 @@ function displaySleep() {
   const lastNightSleep = sleepRepository.getDailySleepHours(getCurrentDate());
   const avgWeeklySleep = sleepRepository.weeklyAvgHours(getCurrentDate());
 
-  $(`<h5 lang="en">You slept <span>${lastNightSleep}</span> hours last night!</h5>`).appendTo(yesterdaySleep);
-  $(`<h5 lang="en">You slept an average of <span>${avgWeeklySleep}</span> hours a night this week!</h5>`).appendTo(yesterdaySleep);
-  $(`<h5 lang="en">Avg. Hours Slept : <span>${userLogsHours}</span></h5>`).appendTo(allTimeSleep);
-  $(`<h5 lang="en">Avg. Sleep Quality : <span>${userLogsQuality}</span></h5>`).appendTo(allTimeSleep);
-  $(`<h5 lang="en"><span>${displayBestSleepers()}</span> great sleepers this week!</h5>`).appendTo(allTimeSleep);
+  $(`<h5>You slept <span>${lastNightSleep}</span> hours last night!</h5>`).appendTo(yesterdaySleep);
+  $(`<h5>You slept an average of <span>${avgWeeklySleep}</span> hours a night this week!</h5>`).appendTo(yesterdaySleep);
+  $(`<h5>Avg. Hours Slept : <span>${userLogsHours}</span></h5>`).appendTo(allTimeSleep);
+  $(`<h5>Avg. Sleep Quality : <span>${userLogsQuality}</span></h5>`).appendTo(allTimeSleep);
+  $(`<h5><span>${displayBestSleepers()}</span> great sleepers this week!</h5>`).appendTo(allTimeSleep);
 }
 
 function displaySleepChart() {
@@ -196,9 +220,9 @@ function displayActivity() {
   const milesWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'miles');
   const kmWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'kilometers');
 
-  $(`<h5 lang="en">•<span>${avgStepsDay.toLocaleString()}</span> STEPS</h5>`).appendTo(dailyActivity);
-  $(`<h5 lang="en">•ACTIVE <span>${avgMinsDay}</span> MINS</h5>`).appendTo(dailyActivity);
-  $(`<h5 lang="en">•WALKED <span>${milesWalked}</span> MILES / <span>${kmWalked}</span> KM</h5>`).appendTo(dailyActivity);
+  $(`<h5>•<span>${avgStepsDay.toLocaleString()}</span> STEPS</h5>`).appendTo(dailyActivity);
+  $(`<h5>•ACTIVE <span>${avgMinsDay}</span> MINS</h5>`).appendTo(dailyActivity);
+  $(`<h5>•WALKED <span>${milesWalked}</span> MILES / <span>${kmWalked}</span> KM</h5>`).appendTo(dailyActivity);
 }
 
 function displayAverageWeeklyActivity() {
@@ -210,9 +234,9 @@ function displayAverageWeeklyActivity() {
   const getDailyMinutes = activityRepository.getDailyStats(getCurrentDate(), 'minutesActive');
   const status = (personal, avg) => personal > avg ? 'over' : 'under';
 
-  $(`<h5 lang="en">•<span>${Math.abs(averageStepsDay - getDailySteps).toLocaleString()}</span> steps ${status(averageStepsDay, getDailySteps)} the avg</h5>`).appendTo(compareActivity);
-  $(`<h5 lang="en">•<span>${Math.abs(averageMinutesDay - getDailyMinutes)}</span> mins ${status(averageMinutesDay, getDailyMinutes)} the avg</h5>`).appendTo(compareActivity);
-  $(`<h5 lang="en">•<span>${Math.abs(averageStairsDay - getDailyFlights)}</span> stair flights ${status(averageStairsDay, getDailyFlights)} the avg</h5>`).appendTo(compareActivity);
+  $(`<h5>•<span>${Math.abs(averageStepsDay - getDailySteps).toLocaleString()}</span> steps ${status(averageStepsDay, getDailySteps)} the avg</h5>`).appendTo(compareActivity);
+  $(`<h5>•<span>${Math.abs(averageMinutesDay - getDailyMinutes)}</span> mins ${status(averageMinutesDay, getDailyMinutes)} the avg</h5>`).appendTo(compareActivity);
+  $(`<h5>•<span>${Math.abs(averageStairsDay - getDailyFlights)}</span> stair flights ${status(averageStairsDay, getDailyFlights)} the avg</h5>`).appendTo(compareActivity);
 }
 
 function displayWeeklyActivity() {
@@ -285,15 +309,15 @@ function displayFriendSteps(array) {
   array.sort((a, b) => b.weeklySteps - a.weeklySteps);
   array.forEach(friend => {
     counter++
-    $(`<li class="friend-${counter}" lang="en">${counter}. <span>${friend.name}</span> <br> ${friend.weeklySteps.toLocaleString()} steps.</li>`).appendTo(friendSteps);
+    $(`<li class="friend-${counter}">${counter}. <span>${friend.name}</span> <br> ${friend.weeklySteps.toLocaleString()} steps.</li>`).appendTo(friendSteps);
   })
 }
 
 function displayTrends() {
   let positiveTrend = activityRepository.getPositiveStepTrends().length;
   let negativeTrend = activityRepository.getNegativeStepTrends().length;
-  $(`<p lang="en">Since joining you've had:</p> <p><span>${positiveTrend}</span> positive trends</p>`).appendTo(stepTrends);
-  $(`<p lang="en"><span>${negativeTrend}</span> negative trends</p>`).appendTo(stepTrends);
+  $(`<p>Since joining you've had:</p> <p><span>${positiveTrend}</span> positive trends</p>`).appendTo(stepTrends);
+  $(`<p><span>${negativeTrend}</span> negative trends</p>`).appendTo(stepTrends);
 }
 
 function getCurrentDate() {
@@ -317,3 +341,5 @@ function getCurrentDate() {
 function displayCurrentDate(day) {
   date.text(`${new Date(day).toString().slice(0, 10)}`);
 }
+
+});
