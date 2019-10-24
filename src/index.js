@@ -30,7 +30,7 @@ import './images/step-icon.png'
 import './images/trend-icon.png'
 import './images/water-icon.png'
 
-  
+
   let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData)
   // console.log(userData)
   let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData)
@@ -38,7 +38,7 @@ import './images/water-icon.png'
   let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
 
   let randomId, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
-  
+
  Promise.all([userData, sleepData, hydrationData, activityData])
   .then(data => {
     userData = data[0];
@@ -58,7 +58,7 @@ import './images/water-icon.png'
     startApp()
   })
   .catch(error => console.log(error))
-    
+
 
 
 function startApp() {
@@ -89,7 +89,7 @@ $(document).ready(() => {
 $('.splash__input--user').keyup((e) => {
   e.preventDefault();
   if ($('.splash__input--user').val() !== '') {
-    $('.splash__button').prop('disabled', false);  
+    $('.splash__button').prop('disabled', false);
   }
 })
 

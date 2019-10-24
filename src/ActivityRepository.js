@@ -9,7 +9,7 @@ class ActivityRepository extends Stats {
   }
 
   getUserLogs() {
-    return this.activityData.filter(user => user.userID === this.id);
+    return this.data.filter(user => user.userID === this.id);
   }
 
   getUserDate(date) {
@@ -17,7 +17,7 @@ class ActivityRepository extends Stats {
   }
 
   getFilteredDate(date) {
-    return this.activityData.filter(log => log.date === date);
+    return this.data.filter(log => log.date === date);
   }
 
   getDistanceWalked(date, user, measurement) {
