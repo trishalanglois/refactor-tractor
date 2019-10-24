@@ -15,3 +15,5 @@ class Stats {
     return parseFloat((total / this.user.length).toFixed(1));
   }
 }
+
+export default Stats;
