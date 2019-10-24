@@ -1,7 +1,7 @@
 class Stats {
-  constructor(id, data) {
-    this.id = id;
+  constructor(data, id) {
     this.data = data;
+    this.id = id;
     this.user = this.getData();
   }
   getData(id = this.id) {
