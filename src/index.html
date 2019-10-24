@@ -5,56 +5,65 @@
   <title>FitLit • Activity Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
-
 <body>
+
+  <section class="splash__container">
+    <h1 class="splash__h1">Welcome To FitLit</h1>
+    <form class="splash__form--user">
+        <label class ="splash__label--user">Enter Your ID</label> 
+        <input class="splash__input--user" placeholder="user ID" type="number" maxlength="2">
+        <button class="splash__button" type="submit" disabled>Enter</button>
+      </form>
+  </section>
+
   <nav>
     <div>
-      <h1 lang="en">FitLit</h1>
-      <h6 lang="en"id="date"></h6>
+      <h1>FitLit</h1>
+      <h6id="date"></h6>
     </div>
   </nav>
   <header>
     <div id="name">
     </div>
     <ul>
-      <li lang="en">Address: <span id="address"></span></li>
-      <li lang="en">Email: <span id="email"></span></li>
-      <li lang="en">Stride Length: <span id="strideLength"></span></li>
-      <li lang="en">Daily Step Goal: <span id="stepGoal"></span></li>
-      <li lang="en">Friends: <span id="friend-list"></span></li>
+      <li>Address: <span id="address"></span></li>
+      <li>Email: <span id="email"></span></li>
+      <li>Stride Length: <span id="strideLength"></span></li>
+      <li>Daily Step Goal: <span id="stepGoal"></span></li>
+      <li>Friends: <span id="friend-list"></span></li>
     </ul>
   </header>
   <main>
     <section class="main__section--steps main__sections">
-      <h3 lang="en">Steps</h3>
+      <h3>Steps</h3>
       <section class="steps--container widget--container">
         <article class="steps__article--1 article--widget">
-          <h5 lang="en">DAILY STEP GOAL</h5>
+          <h5>DAILY STEP GOAL</h5>
           <canvas role="img" aria-label="Circular graph to show daily step progress out of overall step goal" id="step-goal-chart"></canvas>
           <p id="step-compare">
           </p>
         </article>
         <article class="steps__article--2 article--widget">
-          <h5 lang="en">WEEKLY FRIEND SCOREBOARD</h5>
+          <h5>WEEKLY FRIEND SCOREBOARD</h5>
           <ul id="friend-weekly-steps"></ul>
         </article>
         <article class="steps__article--3 article--widget">
-          <h5 lang="en">TRENDS</h5>
+          <h5>TRENDS</h5>
           <img alt="upward arrow indicating trend" class="trend-icon" src="./images/trend-icon.png">
           <div id="step-trends"></div>
         </article>
       </section>
     </section>
     <section class="main__section--hydration main__sections">
-      <h3 lang="en">Hydration</h3>
+      <h3>Hydration</h3>
       <section class="hydration--container widget--container">
         <article class="hydration__article--1 article--widget" id="daily-oz">
-          <h5 lang="en">DAILY OZ</h5>
+          <h5>DAILY OZ</h5>
           <img alt="white image of drop of water on blue background" class="water-icon" src="./images/water-icon.png">
         </article>
         <img alt="man sitting on the ground and sweating with weights laying on the ground around him" class="man-icon" src="./images/little-man-icon.svg">
         <article class="hydration__article--2 article--widget">
-          <h5 lang="en">WEEKLY OZ</h5>
+          <h5>WEEKLY OZ</h5>
           <canvas role="img" aria-label="Bar graph of number of ounces consumed every day for the last week" id="weekly-oz-graph"></canvas>
           <ul id="weekly-oz"></ul>
         </article>
@@ -62,50 +71,50 @@
     </section>
     </section>
     <section class="main__section--sleep main__sections">
-      <h3 lang="en">Sleep</h3>
+      <h3>Sleep</h3>
       <section class="sleep--container widget--container">
         <article class="sleep__article--1 article--widget">
-          <h5 lang="en">HOURS SLEPT</h5>
+          <h5>HOURS SLEPT</h5>
           <img alt="yellow waxing crescent moon" class="sleep-icon" src="./images/sleep-icon.png">
           <div id="yesterday-sleep"></div>
         </article>
         <article class=" sleep__article--2 article--widget">
-            <h5 lang="en">YOUR SLEEPING CHART</h5>
+            <h5>YOUR SLEEPING CHART</h5>
             <canvas role="img" aria-label="Line graph showing number of hours slept and quality fo sleep for each day from the last week" id="weekly-sleep"></canvas>
         </article>
         <article class="sleep__article--3 article--widget">
-          <h5 lang="en">ALL-TIME STATS</h5>
+          <h5>ALL-TIME STATS</h5>
           <img alt="yellow crown" class="trend-icon" src="./images/crown-icon.png">
           <div id="all-time-sleep" class="all-time-sleep"></div>
         </article>
       </section>
     </section>
     <section class="main__section--activity main__sections">
-      <h3 class="section__h3--title" lang="en">Activity</h3>
+      <h3 class="section__h3--title">Activity</h3>
       <section class="activity--container--1 widget--container">
         <article class="activity__article--1 article--widget">
-          <h5 lang="en">TODAY'S ACTIVITY</h5>
+          <h5>TODAY'S ACTIVITY</h5>
           <img alt="stick figure of person running on lime green background" class="exercise-icon" src="./images/exercise.icon.png">
           <div id="daily-activity" class="article__widget--div"></div>
         </article>
         <img alt="clip art of pink shoe taking a step on a purple background" class="step-icon" src="./images/step-icon.png">
         <article class="activity__article--2 article--widget">
-          <h5 lang="en">WORLD COMPARISON</h5>
+          <h5>WORLD COMPARISON</h5>
           <img alt="clipart image of globe" class="globe-icon" src="./images/globe-icon.png">
           <div id="compare-activity"></div>
         </article>
       </section>
       <section class="activity--container--2 widget--container">
         <article class="activity__article--3 article--widget">
-          <h5 lang="en">WEEKLY STEP COUNT</h5>
+          <h5>WEEKLY STEP COUNT</h5>
           <canvas role="img" aria-label="Bar graph of number of steps taken every day for the last week" id="weekly-steps-chart"></canvas>
         </article>
         <article class="activity__article--4 article--widget">
-          <h5 lang="en">WEEKLY MINUTE COUNT</h5>
+          <h5>WEEKLY MINUTE COUNT</h5>
           <canvas role="img" aria-label="Bar graph of number of minutes active every day for the last week" id="weekly-minutes-chart"></canvas>
         </article>
         <article class="activity__article--5 article--widget">
-          <h5 lang="en">WEEKLY FLIGHT COUNT</h5>
+          <h5>WEEKLY FLIGHT COUNT</h5>
           <canvas role="img" aria-label="Bar graph of number of flights of stairs climbed every day for the last week" id="weekly-flights-chart"></canvas>
         </article>
       </section>
