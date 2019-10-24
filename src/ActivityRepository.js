@@ -1,10 +1,10 @@
 import Stats from '../src/Stats';
 
 class ActivityRepository extends Stats {
-  constructor(id, data) {
-    super(id, data);
+  constructor(data, id) {
+    super(data, id);
     this.id = id;
-    this.data = activityData;
+    this.data = data;
     this.user = this.getUserLogs();
   }
 
