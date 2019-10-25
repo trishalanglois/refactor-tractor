@@ -81,7 +81,6 @@ function startApp() {
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-$(document).ready(() => {
   $('nav').hide()
   $('header').hide()
   $('main').hide()
@@ -297,7 +296,7 @@ function friendActivityData(date) {
   let friends = [];
   let findFriends = userRepository.getFriends();
   findFriends.forEach(friend => {
-    let friendData = activityRepository.getUserLogs(friend);
+    let friendData = activityRepository.getData(friend);
     let friendName = userRepository.getUserData(friend).name;
     let indexDay = friendData.findIndex(user => user.date === date);
     let friendWeeks = friendData.slice(indexDay - 6, indexDay + 1);
@@ -350,5 +349,3 @@ function getCurrentDate() {
 function displayCurrentDate(day) {
   date.text(`${new Date(day).toString().slice(0, 10)}`);
 }
-
-});

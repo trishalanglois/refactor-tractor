@@ -36,15 +36,15 @@ class SleepRepository extends Stats {
   }
 
   getAvgQuality() {
-    const avgQual = this.sleepData.reduce((totalQual, day) => {
+    const avgQual = this.data.reduce((totalQual, day) => {
       totalQual += day.sleepQuality;
       return totalQual;
     }, 0);
-    return parseFloat((avgQual / this.sleepData.length).toFixed(1));
+    return parseFloat((avgQual / this.data.length).toFixed(1));
   }
 
   getAllIds() {
-    return this.sleepData.reduce((idHolder, log) => {
+    return this.data.reduce((idHolder, log) => {
       !idHolder.includes(log.userID) && idHolder.push(log.userID);
       return idHolder;
     }, []);
@@ -54,7 +54,7 @@ class SleepRepository extends Stats {
     let sorted = [];
 
     this.getAllIds().forEach(id => {
-      let userLogs = this.sleepData.filter(log => log.userID === id);
+      let userLogs = this.data.filter(log => log.userID === id);
       sorted.push(userLogs);
     });
 
@@ -81,7 +81,7 @@ class SleepRepository extends Stats {
   }
 
   getMaxSleepers(date) {
-    let specificDate = this.sleepData.filter(day => day.date === date);
+    let specificDate = this.data.filter(day => day.date === date);
     let maxSleepHours = Math.max.apply(Math, specificDate.map((log) => {
       return log.hoursSlept;
     }));

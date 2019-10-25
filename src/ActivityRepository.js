@@ -5,13 +5,8 @@ class ActivityRepository extends Stats {
     super(data, id);
     this.id = id;
     this.data = data;
-    this.user = this.getUserLogs();
+    this.user = this.data.filter(user => user.userID === this.id);
   }
-
-  getUserLogs() {
-    return this.data.filter(user => user.userID === this.id);
-  }
-
   getUserDate(date) {
     return this.user.find(log => log.date === date);
   }
@@ -80,7 +75,7 @@ class ActivityRepository extends Stats {
   }
 
   getDailyStats(date, detail) {
-    return this.getUserDate(date)([detail]);
+    return this.getUserDate(date)[detail];
   }
 
   getWeeklyStats(date) {
