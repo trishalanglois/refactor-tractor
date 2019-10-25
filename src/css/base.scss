@@ -1,77 +1,77 @@
-@import 'variables';
-@import 'media-queries';
+@import 'normalize';
+@import '_variables';
+@import '_media-queries';
 // @import 'mixins';
-
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  // border: 3px solid red;
 }
 
 %flex_center-shared {
   align-items: center;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 body {
   @extend %flex_center-shared;
-  background-color: $background_color;
-  flex-direction: column;
+  background-color: $dark_main;
   font-family: 'Noto Sans SC', sans-serif;
+  height: 100vh;
 }
 
 .splash__container {
-  align-items: center;
-  background-color: $background_light_color;
-  display: flex;
-  flex-direction: column;
+  @extend %flex_center-shared;
+  background-color: $box_background;
+  border-radius: 4px;
+  padding: 1%;
   height: 80vh;
   width: 80%;
 }
 
 .splash__h1 {
-  color: white;
-  display: block;
+  color: $accent_color;
   font-size: 3em;
-  margin: auto;
 }
 
 .splash__form--user {
-  align-items: center;
-  border-radius: 3px;
-  background-color: antiquewhite;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  margin: auto;
-  text-align: center;
+  @extend %flex_center-shared;
+  border-radius: 4px;
+  background-color: $accent_color;
+  height: 60%;
   width: 45%;
 }
 
 %formstyle {
-  display: block;
-  height: 28px;
-  margin-bottom: 4%;
-  // margin: auto;
+  height: 2em;
+  margin: 2%;
   width: 40%;
 }
-  
+
 .splash__label--user {
   @extend %formstyle;
-  color: $background_color;
-  font-size: $bodySizeMedium;
+  color: $box_background;
+  font-size: $bodySizeLarge;
+  margin-bottom: 0;
 }
 
 .splash__input--user {
   @extend %formstyle;
+  border: none;
+  border-radius: 4px;
 }
 
 .splash__button {
   @extend %formstyle;
-  color: $box_background;
-  background-color: $background_light_color;
-  height: 20px;
+  border: none;
+  color: $accent_color;
+  background-color: $box_background;
+  height: 2em;
+  border-radius: 4px;
 }
 
 nav {
@@ -168,7 +168,7 @@ main {
 }
 
 h3 {
-  background-color: $background_light_color;
+  background-color: $accent_color;
   border-radius: 4px;
   box-shadow: 10px 10px 30px $shadow_color;
   color: $accent_color;

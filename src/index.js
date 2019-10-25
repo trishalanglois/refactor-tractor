@@ -14,7 +14,6 @@ import SleepRepository from './SleepRepository';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-import './css/normalize.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/AllSteps.png'
@@ -30,7 +29,7 @@ import './images/step-icon.png'
 import './images/trend-icon.png'
 import './images/water-icon.png'
 
-  
+
   let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData)
   // console.log(userData)
   let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData)
@@ -38,7 +37,7 @@ import './images/water-icon.png'
   let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
 
   let randomId, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
-  
+
  Promise.all([userData, sleepData, hydrationData, activityData])
   .then(data => {
     userData = data[0];
@@ -58,7 +57,7 @@ import './images/water-icon.png'
     startApp()
   })
   .catch(error => console.log(error))
-    
+
 
 
 function startApp() {
@@ -81,7 +80,6 @@ function startApp() {
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-$(document).ready(() => {
   $('nav').hide()
   $('header').hide()
   $('main').hide()
@@ -89,7 +87,7 @@ $(document).ready(() => {
 $('.splash__input--user').keyup((e) => {
   e.preventDefault();
   if ($('.splash__input--user').val() !== '') {
-    $('.splash__button').prop('disabled', false);  
+    $('.splash__button').prop('disabled', false);
   }
 })
 
@@ -297,7 +295,7 @@ function friendActivityData(date) {
   let friends = [];
   let findFriends = userRepository.getFriends();
   findFriends.forEach(friend => {
-    let friendData = activityRepository.getUserLogs(friend);
+    let friendData = activityRepository.getData(friend);
     let friendName = userRepository.getUserData(friend).name;
     let indexDay = friendData.findIndex(user => user.date === date);
     let friendWeeks = friendData.slice(indexDay - 6, indexDay + 1);
@@ -350,5 +348,3 @@ function getCurrentDate() {
 function displayCurrentDate(day) {
   date.text(`${new Date(day).toString().slice(0, 10)}`);
 }
-
-});

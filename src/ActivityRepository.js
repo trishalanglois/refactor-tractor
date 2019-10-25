@@ -5,19 +5,14 @@ class ActivityRepository extends Stats {
     super(data, id);
     this.id = id;
     this.data = data;
-    this.user = this.getUserLogs();
+    this.user = this.data.filter(user => user.userID === this.id);
   }
-
-  getUserLogs() {
-    return this.activityData.filter(user => user.userID === this.id);
-  }
-
   getUserDate(date) {
     return this.user.find(log => log.date === date);
   }
 
   getFilteredDate(date) {
-    return this.activityData.filter(log => log.date === date);
+    return this.data.filter(log => log.date === date);
   }
 
   getDistanceWalked(date, user, measurement) {
@@ -80,7 +75,7 @@ class ActivityRepository extends Stats {
   }
 
   getDailyStats(date, detail) {
-    return this.getUserDate(date)([detail]);
+    return this.getUserDate(date)[detail];
   }
 
   getWeeklyStats(date) {
