@@ -35,7 +35,7 @@ beforeEach(() => {
   };
 
   user = new User(sampleData);
-  activityRepository = new ActivityRepository(13, activityData);
+  activityRepository = new ActivityRepository(activityData, 13);
 });
 
 describe('ActivityRepository', () => {
@@ -49,7 +49,7 @@ describe('ActivityRepository', () => {
   });
 
   it('should get the user logs by id', () => {
-    expect(activityRepository.getUserLogs(13)).to.deep.equal([
+    expect(activityRepository.getData(13)).to.deep.equal([
       { "userID": 13, "date": "2019/08/18", "numSteps": 1242, "minutesActive": 64, "flightsOfStairs": 16 },
       { "userID": 13, "date": "2019/08/19", "numSteps": 3425, "minutesActive": 112, "flightsOfStairs": 4 },
       { "userID": 13, "date": "2019/08/20", "numSteps": 5321, "minutesActive": 140, "flightsOfStairs": 174 },
