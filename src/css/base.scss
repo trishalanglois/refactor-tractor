@@ -136,6 +136,13 @@ header {
   width: 32%;
 }
 
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
 #friend-list {
   color: #dbdbdb;
 }
