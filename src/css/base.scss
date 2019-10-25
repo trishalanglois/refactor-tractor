@@ -51,9 +51,9 @@ body {
 
 %formstyle {
   display: block;
-  height: 28px;
-  margin-bottom: 4%;
-  width: 40%;
+  height: 30px;
+  margin-bottom: 3%;
+  width: 45%;
 }
   
 .splash__label--user {
@@ -70,7 +70,6 @@ body {
   @extend %formstyle;
   color: $box_background;
   background-color: $background_light_color;
-  height: 20px;
 }
 
 nav {
@@ -141,6 +140,18 @@ form {
   display: flex;
   flex-direction: column;
   padding: 10px;
+    label {
+      font-size: 1.2em;
+      margin-bottom: 3px;
+    }
+    input {
+      @extend %formstyle
+    }
+    button {
+      background-color: grey;
+      border-radius: 3px;
+      @extend %formstyle
+    }
 }
 
 #friend-list {
