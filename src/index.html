@@ -34,6 +34,33 @@
     </ul>
   </header>
   <main>
+    <section>
+      <h3>
+        <button class="section__btn--activity">Activity</button>
+        <button class="hydration__btn--hyrdration">Hydration</button>
+        <button class="sleep__btn--sleep">Sleep</button>
+      </h3>
+      <article class="addActivity__article">
+        <form method="POST">
+          <label>Date</label>
+          <p class="form__activity--error">Enter a Valid Date</p>
+          <input aria-required="true" class="form-control invalid" type="date" name="date" pattern="" placeholder="YYYY/DD/MM">
+          <label>Number of Steps</label>
+          <p class="form__activity--error">Enter a Valid Number</p>
+          <label>Minutes Active</label>
+          <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
+          <p class="form__activity--error">Enter a Valid Number</p>
+          <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
+          <label>Flights of Stairs</label>
+          <p class="form__activity--error">Enter a Valid Number</p>
+          <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
+          <button type="submit">Submit</button>
+
+        </form>
+      </article>
+      <article class="addHydration__article"></article>
+      <article class="addSleep__article"></article>
+    </section>
     <section class="main__section--steps main__sections">
       <h3>Steps</h3>
       <section class="steps--container widget--container">
