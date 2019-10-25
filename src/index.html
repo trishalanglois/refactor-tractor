@@ -43,23 +43,45 @@
       <article class="addActivity__article">
         <form method="POST">
           <label>Date</label>
-          <p class="form__activity--error">Enter a Valid Date</p>
+          <p class="form__activity--error" hidden>Enter a Valid Date</p>
           <input aria-required="true" class="form-control invalid" type="date" name="date" pattern="" placeholder="YYYY/DD/MM">
           <label>Number of Steps</label>
-          <p class="form__activity--error">Enter a Valid Number</p>
+          <p class="form__activity--error" hidden>Enter a Valid Number</p>
           <label>Minutes Active</label>
           <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
-          <p class="form__activity--error">Enter a Valid Number</p>
+          <p class="form__activity--error" hidden>Enter a Valid Number</p>
           <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
           <label>Flights of Stairs</label>
-          <p class="form__activity--error">Enter a Valid Number</p>
+          <p class="form__activity--error" hidden>Enter a Valid Number</p>
           <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
           <button type="submit">Submit</button>
-
         </form>
       </article>
-      <article class="addHydration__article"></article>
-      <article class="addSleep__article"></article>
+      <article class="addHydration__article">
+        <form method="POST">
+            <label>Date</label>
+            <p class="form__hydration--error" hidden>Enter a Valid Date</p>
+            <input aria-required="true" class="form-control invalid" type="date" name="date" pattern="" placeholder="YYYY/DD/MM">
+            <label>Ounces of Water Drank</label>
+            <p class="form__hydration--error" hidden>Enter a Valid Number</p>
+            <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="##">
+            <button type="submit">Submit</button>
+          </form>
+      </article>
+      <article class="addSleep__article">
+        <form method="POST">
+            <label>Date</label>
+            <p class="form__sleep--error" hidden>Enter a Valid Date</p>
+            <input aria-required="true" class="form-control invalid" type="date" name="date" pattern="" placeholder="YYYY/DD/MM">
+            <label>Number of Hours Slept</label>
+            <p class="form__sleep--error" hidden>Enter a Valid Number</p>
+            <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
+            <label>Quality of Hours Slept</label>
+            <p class="form__sleep--error" hidden>Enter a Valid Number</p>
+            <input aria-required="true" class="form-control invalid" type="number" name="number" pattern="" placeholder="####">
+            <button type="submit">Submit</button>
+          </form>
+      </article>
     </section>
     <section class="main__section--steps main__sections">
       <h3>Steps</h3>

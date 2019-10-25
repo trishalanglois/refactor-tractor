@@ -125,6 +125,17 @@ header {
     }
 }
 
+.addActivity__article,
+.addHydration__article,
+.addSleep__article {
+  background-color: $box_background;
+  border-radius: 4px;
+  display: block;
+  height: 100%;
+  margin: auto;
+  width: 32%;
+}
+
 #friend-list {
   color: #dbdbdb;
 }
