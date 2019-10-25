@@ -1,7 +1,7 @@
+@import 'normalize';
 @import 'variables';
 @import 'media-queries';
 // @import 'mixins';
-
 
 * {
   box-sizing: border-box;
@@ -53,7 +53,6 @@ body {
   display: block;
   height: 28px;
   margin-bottom: 4%;
-  // margin: auto;
   width: 40%;
 }
   

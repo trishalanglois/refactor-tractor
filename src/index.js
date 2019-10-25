@@ -14,7 +14,6 @@ import SleepRepository from './SleepRepository';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-import './css/normalize.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/AllSteps.png'
@@ -38,7 +37,7 @@ import './images/water-icon.png'
   let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
 
   let randomId, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
-  
+
  Promise.all([userData, sleepData, hydrationData, activityData])
   .then(data => {
     userData = data[0];
