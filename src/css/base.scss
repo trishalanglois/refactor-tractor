@@ -27,6 +27,7 @@ body {
 .splash__container {
   @extend %flex_center-shared;
   background-color: $box_background;
+  border-radius: 4px;
   padding: 1%;
   height: 80vh;
   width: 80%;
@@ -54,18 +55,22 @@ body {
 .splash__label--user {
   @extend %formstyle;
   color: $box_background;
-  font-size: $bodySizeMedium;
+  font-size: $bodySizeLarge;
+  margin-bottom: 0;
 }
 
 .splash__input--user {
   @extend %formstyle;
+  border: none;
+  border-radius: 4px;
 }
 
 .splash__button {
   @extend %formstyle;
+  border: none;
   color: $accent_color;
   background-color: $box_background;
-  height: 10%;
+  height: 2em;
   border-radius: 4px;
 }
 
