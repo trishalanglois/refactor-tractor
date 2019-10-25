@@ -2,9 +2,9 @@ class Stats {
   constructor(data, id) {
     this.data = data;
     this.id = id;
-    this.user = this.getData();
+    this.user = this.getData(id);
   }
-  getData(id = this.id) {
+  getData(id) {
     return this.data.filter(user => user.userID === id);
   }
   getAllTimeAvg(key) {
