@@ -1,12 +1,13 @@
 @import 'normalize';
-@import 'variables';
-@import 'media-queries';
+@import '_variables';
+@import '_media-queries';
 // @import 'mixins';
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 3px solid red;
 }
 
 %flex_center-shared {
@@ -16,14 +17,14 @@
 
 body {
   @extend %flex_center-shared;
-  background-color: $background_color;
+  background-color: $dark_main;
   flex-direction: column;
   font-family: 'Noto Sans SC', sans-serif;
 }
 
 .splash__container {
   align-items: center;
-  background-color: $background_light_color;
+  background-color: $box_background;
   display: flex;
   flex-direction: column;
   height: 80vh;
@@ -31,7 +32,7 @@ body {
 }
 
 .splash__h1 {
-  color: white;
+  color: $accent_color;
   display: block;
   font-size: 3em;
   margin: auto;
@@ -39,12 +40,14 @@ body {
 
 .splash__form--user {
   align-items: center;
-  border-radius: 3px;
-  background-color: antiquewhite;
+  border-radius: 4px;
+  background-color: $accent_color;
   display: flex;
   flex-direction: column;
-  height: 300px;
-  margin: auto;
+  justify-content: center;
+  // user-select: center;
+  height: 60%;
+  // margin: auto;
   text-align: center;
   width: 45%;
 }
@@ -55,10 +58,10 @@ body {
   margin-bottom: 4%;
   width: 40%;
 }
-  
+
 .splash__label--user {
   @extend %formstyle;
-  color: $background_color;
+  color: $box_background;
   font-size: $bodySizeMedium;
 }
 
@@ -68,9 +71,10 @@ body {
 
 .splash__button {
   @extend %formstyle;
-  color: $box_background;
-  background-color: $background_light_color;
-  height: 20px;
+  color: $accent_color;
+  background-color: $box_background;
+  height: 15%;
+  border-radius: 4px;
 }
 
 nav {
@@ -167,7 +171,7 @@ main {
 }
 
 h3 {
-  background-color: $background_light_color;
+  background-color: $accent_color;
   border-radius: 4px;
   box-shadow: 10px 10px 30px $shadow_color;
   color: $accent_color;
