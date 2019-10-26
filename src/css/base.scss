@@ -136,6 +136,7 @@ header {
 .section__btn--activity,
 .hydration__btn--hydration,
 .sleep__btn--sleep {
+  height: 30px;
   margin-left: 14%;
   width: 14%;
     &:hover {
@@ -150,7 +151,7 @@ header {
   background-color: #f0a83d;
 }
 
-
+.placeholder__article,
 .addActivity__article,
 .addHydration__article,
 .addSleep__article {
@@ -159,7 +160,11 @@ header {
   display: block;
   height: 100%;
   margin: auto;
-  width: 32%;
+  width: 32%; 
+    p {
+      padding: 4%;
+      font-size: $bodySizeMedium;
+    }
 }
 
 form {

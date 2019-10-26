@@ -94,6 +94,7 @@ $('.splash__button').on('click', (e) => {
 });
 
 $('.section__btn--activity').on('click', () => {
+  $('.placeholder__article').hide()
   $('.section__btn--activity').addClass('section__btn--activity-clicked');
   $('.hydration__btn--hydration').removeClass('hydration__btn--hydration-clicked');
   $('.sleep__btn--sleep').removeClass('sleep__btn--sleep-clicked');
@@ -103,6 +104,7 @@ $('.section__btn--activity').on('click', () => {
 });
 
 $('.hydration__btn--hydration').on('click', () => {
+  $('.placeholder__article').hide()
   $('.section__btn--activity').removeClass('section__btn--activity-clicked');
   $('.hydration__btn--hydration').addClass('hydration__btn--hydration-clicked');
   $('.sleep__btn--sleep').removeClass('sleep__btn--sleep-clicked');
@@ -112,6 +114,7 @@ $('.hydration__btn--hydration').on('click', () => {
 });
 
 $('.sleep__btn--sleep').on('click', () => {
+  $('.placeholder__article').hide()
   $('.section__btn--activity').removeClass('section__btn--activity-clicked');
   $('.hydration__btn--hydration').removeClass('hydration__btn--hydration-clicked');
   $('.sleep__btn--sleep').addClass('sleep__btn--sleep-clicked');
