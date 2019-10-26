@@ -114,25 +114,23 @@ nav {
 }
 
 header {
-  // @extend %flex_center-shared;
   display: flex;
   justify-content: space-between;
-  // height: max-content;
   padding: 0 50px;
   width: 100%;
-    h2 {
-      color: $accent_color;
-      font-size: 2.5em;
-      margin: 3px 0 0 0;
-    }
+    // h2 {
+    //   color: $accent_color;
+    //   font-size: 2.5em;
+    //   margin: 3px 0 0 0;
+    // }
     ul {
       background-color: #23586385;
       border-radius: 3px;
-      margin-top: 10px;
-      padding: 10px;
+      margin-top: 1em;
+      padding: 1em;
     }
       li {
-        margin-bottom: 6px;
+        margin-bottom: .5em;
       }
     p {
       color: #dbdbdb;
