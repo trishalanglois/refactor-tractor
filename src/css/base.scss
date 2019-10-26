@@ -138,6 +138,7 @@ header {
 .section__btn--activity,
 .hydration__btn--hydration,
 .sleep__btn--sleep {
+  height: 30px;
   margin-left: 14%;
   width: 14%;
     &:hover {
@@ -146,6 +147,13 @@ header {
     }
 }
 
+.section__btn--activity-clicked,
+.hydration__btn--hydration-clicked,
+.sleep__btn--sleep-clicked {
+  background-color: #f0a83d;
+}
+
+.placeholder__article,
 .addActivity__article,
 .addHydration__article,
 .addSleep__article {
@@ -154,7 +162,11 @@ header {
   display: block;
   height: 100%;
   margin: auto;
-  width: 32%;
+  width: 32%; 
+    p {
+      padding: 4%;
+      font-size: $bodySizeMedium;
+    }
 }
 
 form {
@@ -167,7 +179,11 @@ form {
       margin-bottom: 3px;
     }
     input {
-      @extend %formstyle
+      outline: 0;
+      @extend %formstyle;
+        &:invalid {
+          border-color: red;
+        }
     }
     button {
       background-color: grey;
