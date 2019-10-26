@@ -51,7 +51,7 @@ body {
 }
 
 %formstyle {
-  height: 2em;
+  // height: 2em;
   margin: 2%;
   width: 40%;
 }
@@ -64,9 +64,11 @@ body {
 }
 
 .splash__input--user {
-  @extend %formstyle;
   border: none;
   border-radius: 4px;
+  font-size: .8em;
+  margin: 0;
+  width: 100%;
 }
 
 .splash__button {
