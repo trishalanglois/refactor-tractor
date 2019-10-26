@@ -118,20 +118,15 @@ header {
   justify-content: space-between;
   padding: 0 50px;
   width: 100%;
-    // h2 {
-    //   color: $accent_color;
-    //   font-size: 2.5em;
-    //   margin: 3px 0 0 0;
-    // }
     ul {
       background-color: #23586385;
       border-radius: 3px;
       margin-top: 1em;
       padding: 1em;
     }
-      li {
-        margin-bottom: .5em;
-      }
+    li {
+      margin-bottom: .5em;
+    }
     p {
       color: #dbdbdb;
       font-size: $bodySizeMedium;
@@ -202,10 +197,10 @@ span {
 }
 
 main {
-  width: 1150px;
-    @include xl {
-      width: 100%;
-    }
+  width: 100%;
+    // @include xl {
+    //   width: 100%;
+    // }
 }
 
 .main__sections {
@@ -245,16 +240,23 @@ h3 {
   box-shadow: 10px 10px 30px $shadow_color;
   flex-direction: column;
   justify-content: space-between;
-  width: 350px;
+  width: 32%;
     @include xl {
       width: 32%;
     }
     @include lg {
       width: 32%;
     }
-    @include md {}
-    @include sm {}
-    @include xs {}
+    @include md {
+      flex-wrap: wrap;
+      // width: 50%;
+    }
+    @include sm {
+      // width: 98%;
+    }
+    @include xs {
+      // width: 98%;
+    }
 }
 
 .steps__article--1 p {
@@ -265,7 +267,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100%;
+  height: 80%;
   width: 80%;
 }
 
@@ -296,13 +298,16 @@ h5 {
   font-size: $bodySizeSmall;
   margin: 10px 0 0 0;
   text-align: center;
+  display: inline-block;
 }
 
 #friend-weekly-steps {
   font-size: $bodySizeMedium;
     li {
       color: #363636;
+
     }
+
 }
 
 .friend-1 span,
