@@ -36,7 +36,7 @@ import './images/water-icon.png'
   let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json()).then(json => json.hydrationData)
   let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
 
-  let randomId, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
+  let currentUserID, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
 
  Promise.all([userData, sleepData, hydrationData, activityData])
   .then(data => {
@@ -47,18 +47,16 @@ import './images/water-icon.png'
   })
 
   .then(data => {
-    randomId = Math.floor(Math.random() * (50 - 1) + 1);
-    stats = new Stats(userData, randomId);
-    userRepository = new UserRepository(userData, randomId);
-    hydrationRepository = new HydrationRepository(hydrationData, randomId);
-    sleepRepository = new SleepRepository(sleepData, randomId);
-    activityRepository = new ActivityRepository(activityData, randomId);
+    currentUserID = Math.floor(Math.random() * (50 - 1) + 1);
+    stats = new Stats(userData, currentUserID);
+    userRepository = new UserRepository(userData, currentUserID);
+    hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
+    sleepRepository = new SleepRepository(sleepData, currentUserID);
+    activityRepository = new ActivityRepository(activityData, currentUserID);
     user = new User(userRepository.getUserData());
     startApp()
   })
   .catch(error => console.log(error))
-
-
 
 function startApp() {
   updateUserDataDOM(userRepository.getUserData());
