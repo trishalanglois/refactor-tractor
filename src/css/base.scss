@@ -7,6 +7,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 1px solid red;
 }
 
 %flex_center-shared {
@@ -18,13 +19,19 @@
 
 body {
   @extend %flex_center-shared;
-  background-color: $dark_main;
+  background-color: $box_background;
   font-family: 'Noto Sans SC', sans-serif;
+}
+
+.splash-feature-text {
+  font-size: $feature-font-size;
+  font-family: $feature-font;
 }
 
 .splash__container {
   @extend %flex_center-shared;
-  background-color: $box_background;
+  margin-top: 5%;
+  background-color: $accent_color;
   border-radius: 4px;
   padding: 1%;
   height: 80vh;
@@ -32,8 +39,8 @@ body {
 }
 
 .splash__h1 {
-  color: $accent_color;
-  font-size: 3em;
+  color: $box_background;
+  font-size: $bodySizeLarge;
 }
 
 .splash__form--user {
@@ -59,6 +66,7 @@ body {
 .splash__label--user {
   @extend %formstyle;
   color: $box_background;
+  font-family: $feature-font;
   font-size: $bodySizeLarge;
   margin-bottom: 0;
 }
