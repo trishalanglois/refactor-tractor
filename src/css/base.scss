@@ -95,7 +95,7 @@ nav {
   background-image: linear-gradient(white, #e2e2e2);
   color: #2b8b9e;
   font-size: $bodySizeSmall;
-  height: 70px;
+  height: 4em;
   justify-content: center;
   width: 100%;
     h1 {
@@ -106,12 +106,6 @@ nav {
     h2 {
       font-size: $bodySizeLarge;
     }
-}
-
-nav div {
-  @extend %flex_center-shared;
-  justify-content: space-between;
-  width: 1100px;
 }
 
 #welcome-name {
