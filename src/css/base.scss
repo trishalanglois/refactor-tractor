@@ -144,6 +144,13 @@ header {
     }
 }
 
+.section__btn--activity-clicked,
+.hydration__btn--hydration-clicked,
+.sleep__btn--sleep-clicked {
+  background-color: #f0a83d;
+}
+
+
 .addActivity__article,
 .addHydration__article,
 .addSleep__article {

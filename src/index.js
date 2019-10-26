@@ -1,7 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
 
 import Stats from './Stats';
@@ -11,11 +7,8 @@ import ActivityRepository from './ActivityRepository';
 import HydrationRepository from './HydrationRepository';
 import SleepRepository from './SleepRepository';
 
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/AllSteps.png'
 import './images/crown-icon.png'
 import './images/exercise.icon.png'
@@ -30,11 +23,13 @@ import './images/trend-icon.png'
 import './images/water-icon.png'
 
 
-  let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData)
-  // console.log(userData)
-  let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData)
-  let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json()).then(json => json.hydrationData)
-  let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
+let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData);
+  
+let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData);
+
+let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json()).then(json => json.hydrationData);
+
+let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData);
 
   let randomId, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
 
@@ -76,13 +71,9 @@ function startApp() {
   displaySleepChart()
 }
 
-// startApp()
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-  $('nav').hide()
-  $('header').hide()
-  $('main').hide()
+$('nav').hide()
+$('header').hide()
+$('main').hide()
 
 $('.splash__input--user').keyup((e) => {
   e.preventDefault();
@@ -92,11 +83,41 @@ $('.splash__input--user').keyup((e) => {
 })
 
 $('.splash__button').on('click', (e) => {
-    $('.splash__container').hide();
-    $('nav').show();
-    $('header').show();
-    $('main').show();
+  $('.addActivity__article').hide();
+  $('.splash__container').hide();
+  $('.addHydration__article').hide();
+  $('.addSleep__article').hide();
+  $('nav').show();
+  $('header').show();
+  $('main').show();
   e.preventDefault();
+});
+
+$('.section__btn--activity').on('click', () => {
+  $('.section__btn--activity').addClass('section__btn--activity-clicked');
+  $('.hydration__btn--hydration').removeClass('hydration__btn--hydration-clicked');
+  $('.sleep__btn--sleep').removeClass('sleep__btn--sleep-clicked');
+  $('.addActivity__article').show();
+  $('.addHydration__article').hide();
+  $('.addSleep__article').hide();
+});
+
+$('.hydration__btn--hydration').on('click', () => {
+  $('.section__btn--activity').removeClass('section__btn--activity-clicked');
+  $('.hydration__btn--hydration').addClass('hydration__btn--hydration-clicked');
+  $('.sleep__btn--sleep').removeClass('sleep__btn--sleep-clicked');
+  $('.addActivity__article').hide();
+  $('.addHydration__article').show();
+  $('.addSleep__article').hide();
+});
+
+$('.sleep__btn--sleep').on('click', () => {
+  $('.section__btn--activity').removeClass('section__btn--activity-clicked');
+  $('.hydration__btn--hydration').removeClass('hydration__btn--hydration-clicked');
+  $('.sleep__btn--sleep').addClass('sleep__btn--sleep-clicked');
+  $('.addActivity__article').hide();
+  $('.addHydration__article').hide();
+  $('.addSleep__article').show();
 });
 
 const weeklyStepsChart = $('#weekly-steps-chart');
@@ -120,8 +141,6 @@ const friendSteps = $('#friend-weekly-steps');
 const stepTrends = $('#step-trends');
 const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
-
-
 
 
 function updateUserDataDOM(userInfo) {
