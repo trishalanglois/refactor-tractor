@@ -29,34 +29,54 @@ import './images/step-icon.png'
 import './images/trend-icon.png'
 import './images/water-icon.png'
 
+let currentUserID;
 
-  let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData)
-  // console.log(userData)
-  let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData)
-  let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json()).then(json => json.hydrationData)
-  let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
+$('nav').hide()
+$('header').hide()
+$('main').hide()
 
-  let currentUserID, stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
+$('.splash__input--user').keyup((e) => {
+  e.preventDefault();
+  if ($('.splash__input--user').val() !== '') {
+    $('.splash__button').prop('disabled', false);
+  }
+})
 
- Promise.all([userData, sleepData, hydrationData, activityData])
-  .then(data => {
-    userData = data[0];
-    sleepData = data[1];
-    hydrationData = data[2];
-    activityData = data[3];
-  })
+$('.splash__button').on('click', (e) => {
+  var currentUserID = $('.splash__input--user').val();
+  $('.splash__container').hide();
+  $('nav').show();
+  $('header').show();
+  $('main').show();
+  e.preventDefault();
+});
 
-  .then(data => {
-    currentUserID = Math.floor(Math.random() * (50 - 1) + 1);
-    stats = new Stats(userData, currentUserID);
-    userRepository = new UserRepository(userData, currentUserID);
-    hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
-    sleepRepository = new SleepRepository(sleepData, currentUserID);
-    activityRepository = new ActivityRepository(activityData, currentUserID);
-    user = new User(userRepository.getUserData());
-    startApp()
-  })
-  .catch(error => console.log(error))
+let stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
+
+let userData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/users/userData').then(response => response.json()).then(json => json.userData)
+// console.log(userData)
+let sleepData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData').then(response => response.json()).then(json => json.sleepData)
+let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData').then(response => response.json()).then(json => json.hydrationData)
+let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData)
+
+Promise.all([userData, sleepData, hydrationData, activityData])
+.then(data => {
+  userData = data[0];
+  sleepData = data[1];
+  hydrationData = data[2];
+  activityData = data[3];
+})
+
+.then(data => {
+  stats = new Stats(userData, currentUserID);
+  userRepository = new UserRepository(userData, currentUserID);
+  hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
+  sleepRepository = new SleepRepository(sleepData, currentUserID);
+  activityRepository = new ActivityRepository(activityData, currentUserID);
+  user = new User(userRepository.getUserData());
+  startApp()
+})
+.catch(error => console.log(error))
 
 function startApp() {
   updateUserDataDOM(userRepository.getUserData());
@@ -73,29 +93,6 @@ function startApp() {
   displayTrends();
   displaySleepChart()
 }
-
-// startApp()
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-  $('nav').hide()
-  $('header').hide()
-  $('main').hide()
-
-$('.splash__input--user').keyup((e) => {
-  e.preventDefault();
-  if ($('.splash__input--user').val() !== '') {
-    $('.splash__button').prop('disabled', false);
-  }
-})
-
-$('.splash__button').on('click', (e) => {
-    $('.splash__container').hide();
-    $('nav').show();
-    $('header').show();
-    $('main').show();
-  e.preventDefault();
-});
 
 const weeklyStepsChart = $('#weekly-steps-chart');
 const weeklyMinutesChart = $('#weekly-minutes-chart');
@@ -118,9 +115,6 @@ const friendSteps = $('#friend-weekly-steps');
 const stepTrends = $('#step-trends');
 const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
-
-
-
 
 function updateUserDataDOM(userInfo) {
   $(`<p>Welcome,</p><h1 id='welcome-name'>${user.getFirstName()}</h1>`).prependTo(name);
