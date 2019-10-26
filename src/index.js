@@ -43,12 +43,19 @@ $('.splash__input--user').keyup((e) => {
 })
 
 $('.splash__button').on('click', (e) => {
-  var currentUserID = $('.splash__input--user').val();
+  e.preventDefault();
+  currentUserID = parseInt($('.splash__input--user').val());
+  stats = new Stats(userData, currentUserID);
+  userRepository = new UserRepository(userData, currentUserID);
+  hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
+  sleepRepository = new SleepRepository(sleepData, currentUserID);
+  activityRepository = new ActivityRepository(activityData, currentUserID);
+  user = new User(userRepository.getUserData());
   $('.splash__container').hide();
   $('nav').show();
   $('header').show();
   $('main').show();
-  e.preventDefault();
+  startApp()
 });
 
 let stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
@@ -66,17 +73,18 @@ Promise.all([userData, sleepData, hydrationData, activityData])
   hydrationData = data[2];
   activityData = data[3];
 })
-
-.then(data => {
-  stats = new Stats(userData, currentUserID);
-  userRepository = new UserRepository(userData, currentUserID);
-  hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
-  sleepRepository = new SleepRepository(sleepData, currentUserID);
-  activityRepository = new ActivityRepository(activityData, currentUserID);
-  user = new User(userRepository.getUserData());
-  startApp()
-})
 .catch(error => console.log(error))
+
+// .then(data => {
+//   stats = new Stats(userData, currentUserID);
+//   userRepository = new UserRepository(userData, currentUserID);
+//   hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
+//   sleepRepository = new SleepRepository(sleepData, currentUserID);
+//   activityRepository = new ActivityRepository(activityData, currentUserID);
+//   user = new User(userRepository.getUserData());
+//   startApp()
+// })
+// .catch(error => console.log(error))
 
 function startApp() {
   updateUserDataDOM(userRepository.getUserData());
