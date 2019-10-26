@@ -99,10 +99,12 @@ nav {
   justify-content: center;
   width: 100%;
     h1 {
-      font-size: 3.3em;
+      font-size: 4em;
+      font-family: $feature-font;
+      margin-top: 1em;
     }
-    h6 {
-      font-size: $bodySizeMedium;
+    h2 {
+      font-size: $bodySizeLarge;
     }
 }
 
@@ -121,7 +123,7 @@ header {
   // @extend %flex_center-shared;
   display: flex;
   justify-content: space-between;
-  height: max-content;
+  // height: max-content;
   padding: 0 50px;
   width: 100%;
     h2 {
