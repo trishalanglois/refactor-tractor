@@ -177,7 +177,7 @@ form {
       margin-bottom: 3px;
     }
     input {
-      @extend %formstyle
+      @extend %formstyle;
     }
     button {
       background-color: grey;
@@ -187,6 +187,9 @@ form {
           @extend %buttonHover;
         }
     }
+}
+input:invalid {
+  border-color: red;
 }
 
 #friend-list {
