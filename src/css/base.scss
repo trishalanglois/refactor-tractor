@@ -59,7 +59,6 @@ body {
 }
 
 %formstyle {
-  // height: 2em;
   margin: 2%;
   width: 40%;
 }
@@ -68,7 +67,7 @@ body {
   @extend %formstyle;
   color: $box_background;
   font-family: $feature-font;
-  font-size: $bodySizeLarge;
+  font-size: 1.75em;
   margin-bottom: 0;
 }
 
@@ -170,7 +169,8 @@ header {
 }
 
 form {
-  @extend %flex_center-shared;
+  display: flex;
+  flex-direction: column;
   padding: 10px;
     label {
       font-size: 1.2em;
@@ -178,7 +178,6 @@ form {
     }
     input {
       outline: 0;
-      width: 100%;
       @extend %formstyle;
         &:invalid {
           border-color: red;
@@ -188,6 +187,7 @@ form {
       align-self: center;
       background-color: grey;
       border-radius: 3px;
+      height: 2em;
       @extend %formstyle;
         &:hover {
           @extend %buttonHover;

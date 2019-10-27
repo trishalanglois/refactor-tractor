@@ -16,7 +16,6 @@
       <button class="splash__button" type="submit" disabled>Enter</button>
       </form>
   </section>
-
   <nav>
     <h1>FitLit</h1>
     <h2 id="date"></h2>
@@ -44,42 +43,42 @@
         </article>
       <article class="addActivity__article">
         <form method="POST">
-          <label>Date
-          <input aria-required="true" class="form-control" type="text" name="date" placeholder="YYYY/DD/MM">
+          <label for="form__control--date1">Date
+          <input aria-required="true" id="form__control--date1" type="text" name="date" placeholder="YYYY/DD/MM">
           </label>
-          <label>Number of Steps
-          <input aria-required="true" class="form-control" type="number" name="number" pattern="/^[0-9]+$/" min="1" max="18000" placeholder="#">
+          <label for="form__control--steps">Number of Steps
+          <input aria-required="true" id="form__control--steps" type="number" name="number" pattern="/^[0-9]+$/" min="1" max="20000" placeholder="#">
           </label>
-          <label>Minutes Active
-          <input aria-required="true" class="form-control" type="number" name="number" pattern="/^[0-9]+$/" min="1.0" max="400" placeholder="#">
+          <label for="form__control--minutes">Minutes Active
+          <input aria-required="true" id="form__control--minutes" type="number" name="number" pattern="/^[0-9]+$/" min="1.0" max="400" placeholder="#">
           </label>
-          <label>Flights of Stairs
-          <input aria-required="true" class="form-control" type="number" name="number" pattern="/^[0-9]+$/" min="1.0" max="500" placeholder="#">
+          <label for="form__control--stairs">Flights of Stairs
+          <input aria-required="true" id="form__control--stairs" type="number" name="number" pattern="/^[0-9]+$/" min="1.0" max="500" placeholder="#">
           </label>
           <button type="submit">Submit</button>
         </form>
       </article>
       <article class="addHydration__article">
         <form method="POST">
-            <label>Date
-            <input aria-required="true" class="form-control" type="text" name="date" placeholder="YYYY/DD/MM">
+            <label for+="form__control--date2">Date
+            <input aria-required="true" id="form__control--date2" type="text" name="date" placeholder="YYYY/DD/MM">
             </label>
-            <label>Ounces of Water Drank
-            <input aria-required="true" class="form-control" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="200" placeholder="#">
+            <label for="form__control--water">Ounces of Water Drank
+            <input aria-required="true" id="form__control--water" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="200" placeholder="#">
             </label>
             <button type="submit">Submit</button>
           </form>
       </article>
       <article class="addSleep__article">
         <form method="POST" >
-            <label>Date
-            <input aria-required="true" class="form-control" type="text" name="date" placeholder="YYYY/DD/MM">
+            <label for="form__control--date3">Date
+            <input aria-required="true" id="form__control--date3" type="text" name="date" placeholder="YYYY/DD/MM">
             </label>
-            <label>Number of Hours Slept
-            <input aria-required="true" class="form-control" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="20" placeholder="#">
+            <label for="form__control--hours">Number of Hours Slept
+            <input aria-required="true" id="form__control--hours" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="20" placeholder="#">
             </label>
-            <label>Quality of Hours Slept
-            <input aria-required="true" class="form-control" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="10" placeholder="#">
+            <label for="form__control--quality">Quality of Hours Slept
+            <input aria-required="true" id="form__control--quality" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="10" placeholder="#">
             </label>
             <button type="submit">Submit</button>
           </form>
