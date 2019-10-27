@@ -170,9 +170,7 @@ header {
 }
 
 form {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+  @extend %flex_center-shared;
   padding: 10px;
     label {
       font-size: 1.2em;
@@ -180,12 +178,14 @@ form {
     }
     input {
       outline: 0;
+      width: 100%;
       @extend %formstyle;
         &:invalid {
           border-color: red;
         }
     }
     button {
+      align-self: center;
       background-color: grey;
       border-radius: 3px;
       @extend %formstyle;
