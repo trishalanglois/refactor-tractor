@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
   <title>FitLit • Activity Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-
   <section class="splash__container">
-    <h1 class="splash__h1">It's Lit to Be Fit</h1>
+    <h1 class="splash__h1">It's <span class='splash-feature-text'> Lit</span> to Be <span class='splash-feature-text'>Fit</span></h1>
     <form class="splash__form--user">
       <label class ="splash__label--user">Enter Your ID
       <input class="splash__input--user" placeholder="User ID" type="number" maxlength="2">
@@ -18,14 +18,12 @@
   </section>
 
   <nav>
-    <div>
-      <h1>FitLit</h1>
-      <h6id="date"></h6>
-    </div>
+    <h1>FitLit</h1>
+    <h2 id="date"></h2>
   </nav>
   <header>
-    <div id="name">
-    </div>
+    <p id="name">
+    </p>
     <ul>
       <li>Address: <span id="address"></span></li>
       <li>Email: <span id="email"></span></li>

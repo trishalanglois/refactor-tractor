@@ -7,6 +7,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 1px solid red;
 }
 
 %flex_center-shared {
@@ -22,18 +23,25 @@ body {
   font-family: 'Noto Sans SC', sans-serif;
 }
 
+.splash-feature-text {
+  font-size: $feature-font-size;
+  font-family: $feature-font;
+}
+
 .splash__container {
   @extend %flex_center-shared;
-  background-color: $box_background;
+  margin-top: 5%;
+  background-color: $accent_color;
   border-radius: 4px;
   padding: 1%;
   height: 80vh;
   width: 80%;
+  border: 5px solid $box_background;
 }
 
 .splash__h1 {
-  color: $accent_color;
-  font-size: 3em;
+  color: $box_background;
+  font-size: $bodySizeLarge;
 }
 
 .splash__form--user {
@@ -59,6 +67,7 @@ body {
 .splash__label--user {
   @extend %formstyle;
   color: $box_background;
+  font-family: $feature-font;
   font-size: $bodySizeLarge;
   margin-bottom: 0;
 }
@@ -88,47 +97,38 @@ nav {
   background-image: linear-gradient(white, #e2e2e2);
   color: #2b8b9e;
   font-size: $bodySizeSmall;
-  height: 70px;
+  height: 4em;
   justify-content: center;
   width: 100%;
     h1 {
-      font-size: 3.3em;
+      font-size: 4em;
+      font-family: $feature-font;
+      margin-top: 1em;
     }
-    h6 {
-      font-size: $bodySizeMedium;
+    h2 {
+      font-size: $bodySizeLarge;
     }
-}
-
-nav div {
-  @extend %flex_center-shared;
-  justify-content: space-between;
-  width: 1100px;
 }
 
 #welcome-name {
-  color: #f0a83d;
+  color: $accent_light;
+  font-family: $feature-font;
 }
 
 header {
-  @extend %flex_center-shared;
+  display: flex;
   justify-content: space-between;
-  height: max-content;
   padding: 0 50px;
-  width: 1200px;
-    h2 {
-      color: $accent_color;
-      font-size: 2.5em;
-      margin: 3px 0 0 0;
-    }
+  width: 100%;
     ul {
       background-color: #23586385;
       border-radius: 3px;
-      margin-top: 10px;
-      padding: 10px;
+      margin-top: 1em;
+      padding: 1em;
     }
-      li {
-        margin-bottom: 6px;
-      }
+    li {
+      margin-bottom: .5em;
+    }
     p {
       color: #dbdbdb;
       font-size: $bodySizeMedium;
@@ -215,10 +215,10 @@ span {
 }
 
 main {
-  width: 1150px;
-    @include xl {
-      width: 100%;
-    }
+  width: 100%;
+    // @include xl {
+    //   width: 100%;
+    // }
 }
 
 .main__sections {
@@ -258,16 +258,23 @@ h3 {
   box-shadow: 10px 10px 30px $shadow_color;
   flex-direction: column;
   justify-content: space-between;
-  width: 350px;
+  width: 32%;
     @include xl {
       width: 32%;
     }
     @include lg {
       width: 32%;
     }
-    @include md {}
-    @include sm {}
-    @include xs {}
+    @include md {
+      flex-wrap: wrap;
+      // width: 50%;
+    }
+    @include sm {
+      // width: 98%;
+    }
+    @include xs {
+      // width: 98%;
+    }
 }
 
 .steps__article--1 p {
@@ -278,7 +285,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100%;
+  height: 80%;
   width: 80%;
 }
 
@@ -309,13 +316,16 @@ h5 {
   font-size: $bodySizeSmall;
   margin: 10px 0 0 0;
   text-align: center;
+  display: inline-block;
 }
 
 #friend-weekly-steps {
   font-size: $bodySizeMedium;
     li {
       color: #363636;
+
     }
+
 }
 
 .friend-1 span,
