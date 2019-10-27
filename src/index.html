@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
   <title>FitLit • Activity Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-
   <section class="splash__container">
-    <h1 class="splash__h1">It's Lit to Be Fit</h1>
+    <h1 class="splash__h1">It's <span class='splash-feature-text'> Lit</span> to Be <span class='splash-feature-text'>Fit</span></h1>
     <form class="splash__form--user">
         <label class ="splash__label--user">Enter Your ID</label>
         <input class="splash__input--user" placeholder="User ID" type="number" maxlength="2">
@@ -17,14 +17,12 @@
   </section>
 
   <nav>
-    <div>
-      <h1>FitLit</h1>
-      <h6id="date"></h6>
-    </div>
+    <h1>FitLit</h1>
+    <h2 id="date"></h2>
   </nav>
   <header>
-    <div id="name">
-    </div>
+    <p id="name">
+    </p>
     <ul>
       <li>Address: <span id="address"></span></li>
       <li>Email: <span id="email"></span></li>
@@ -34,6 +32,49 @@
     </ul>
   </header>
   <main>
+    <section class="main__section--hydration main__sections">
+      <h3>
+        <button class="section__btn--activity">Activity</button>
+        <button class="hydration__btn--hydration">Hydration</button>
+        <button class="sleep__btn--sleep">Sleep</button>
+      </h3>
+      <article class="placeholder__article">
+          <p>To enter your information into the FitLit activity tracker please select the categories button above</p>
+        </article>
+      <article class="addActivity__article">
+        <form method="POST">
+          <label>Date</label>
+          <input aria-required="true" class="form-control" type="text" name="date" placeholder="YYYY/DD/MM">
+          <label>Number of Steps</label>
+          <input aria-required="true" class="form-control" type="number" name="number" pattern="/^[0-9]+$/" min="1" max="18000" placeholder="#">
+          <label>Minutes Active</label>
+          <input aria-required="true" class="form-control" type="number" name="number" pattern="/^[0-9]+$/" min="1.0" max="400" placeholder="#">
+          <label>Flights of Stairs</label>
+          <input aria-required="true" class="form-control" type="number" name="number" pattern="/^[0-9]+$/" min="1.0" max="500" placeholder="#">
+          <button type="submit">Submit</button>
+        </form>
+      </article>
+      <article class="addHydration__article">
+        <form method="POST">
+            <label>Date</label>
+            <input aria-required="true" class="form-control" type="text" name="date" placeholder="YYYY/DD/MM">
+            <label>Ounces of Water Drank</label>
+            <input aria-required="true" class="form-control" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="200" placeholder="#">
+            <button type="submit">Submit</button>
+          </form>
+      </article>
+      <article class="addSleep__article">
+        <form method="POST" >
+            <label>Date</label>
+            <input aria-required="true" class="form-control" type="text" name="date" placeholder="YYYY/DD/MM">
+            <label>Number of Hours Slept</label>
+            <input aria-required="true" class="form-control" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="20" placeholder="#">
+            <label>Quality of Hours Slept</label>
+            <input aria-required="true" class="form-control" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="10" placeholder="#">
+            <button type="submit">Submit</button>
+          </form>
+      </article>
+    </section>
     <section class="main__section--steps main__sections">
       <h3>Steps</h3>
       <section class="steps--container widget--container">

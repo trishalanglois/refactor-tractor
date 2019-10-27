@@ -7,7 +7,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  // border: 3px solid red;
+  border: 1px solid red;
 }
 
 %flex_center-shared {
@@ -21,21 +21,27 @@ body {
   @extend %flex_center-shared;
   background-color: $dark_main;
   font-family: 'Noto Sans SC', sans-serif;
-  height: 100vh;
+}
+
+.splash-feature-text {
+  font-size: $feature-font-size;
+  font-family: $feature-font;
 }
 
 .splash__container {
   @extend %flex_center-shared;
-  background-color: $box_background;
+  margin-top: 5%;
+  background-color: $accent_color;
   border-radius: 4px;
   padding: 1%;
   height: 80vh;
   width: 80%;
+  border: 5px solid $box_background;
 }
 
 .splash__h1 {
-  color: $accent_color;
-  font-size: 3em;
+  color: $box_background;
+  font-size: $bodySizeLarge;
 }
 
 .splash__form--user {
@@ -44,6 +50,12 @@ body {
   background-color: $accent_color;
   height: 60%;
   width: 45%;
+}
+
+%buttonHover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .1s ease-in-out;
 }
 
 %formstyle {
@@ -55,6 +67,7 @@ body {
 .splash__label--user {
   @extend %formstyle;
   color: $box_background;
+  font-family: $feature-font;
   font-size: $bodySizeLarge;
   margin-bottom: 0;
 }
@@ -72,6 +85,9 @@ body {
   background-color: $box_background;
   height: 2em;
   border-radius: 4px;
+    &:hover {
+      @extend %buttonHover;
+    }
 }
 
 nav {
@@ -79,50 +95,101 @@ nav {
   background-image: linear-gradient(white, #e2e2e2);
   color: #2b8b9e;
   font-size: $bodySizeSmall;
-  height: 70px;
+  height: 4em;
   justify-content: center;
   width: 100%;
     h1 {
-      font-size: 3.3em;
+      font-size: 4em;
+      font-family: $feature-font;
+      margin-top: 1em;
     }
-    h6 {
-      font-size: $bodySizeMedium;
+    h2 {
+      font-size: $bodySizeLarge;
     }
-}
-
-nav div {
-  @extend %flex_center-shared;
-  justify-content: space-between;
-  width: 1100px;
 }
 
 #welcome-name {
-  color: #f0a83d;
+  color: $accent_light;
+  font-family: $feature-font;
 }
 
 header {
-  @extend %flex_center-shared;
+  display: flex;
   justify-content: space-between;
-  height: max-content;
   padding: 0 50px;
-  width: 1200px;
-    h2 {
-      color: $accent_color;
-      font-size: 2.5em;
-      margin: 3px 0 0 0;
-    }
+  width: 100%;
     ul {
       background-color: #23586385;
       border-radius: 3px;
-      margin-top: 10px;
-      padding: 10px;
+      margin-top: 1em;
+      padding: 1em;
     }
-      li {
-        margin-bottom: 6px;
-      }
+    li {
+      margin-bottom: .5em;
+    }
     p {
       color: #dbdbdb;
       font-size: $bodySizeMedium;
+    }
+}
+
+.section__btn--activity,
+.hydration__btn--hydration,
+.sleep__btn--sleep {
+  height: 30px;
+  margin-left: 14%;
+  width: 14%;
+    &:hover {
+      @extend %buttonHover;
+      font-weight: 900;
+    }
+}
+
+.section__btn--activity-clicked,
+.hydration__btn--hydration-clicked,
+.sleep__btn--sleep-clicked {
+  background-color: #f0a83d;
+}
+
+.placeholder__article,
+.addActivity__article,
+.addHydration__article,
+.addSleep__article {
+  background-color: $box_background;
+  border-radius: 4px;
+  display: block;
+  height: 100%;
+  margin: auto;
+  width: 32%; 
+    p {
+      padding: 4%;
+      font-size: $bodySizeMedium;
+    }
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+    label {
+      font-size: 1.2em;
+      margin-bottom: 3px;
+    }
+    input {
+      outline: 0;
+      @extend %formstyle;
+        &:invalid {
+          border-color: red;
+        }
+    }
+    button {
+      background-color: grey;
+      border-radius: 3px;
+      @extend %formstyle;
+        &:hover {
+          @extend %buttonHover;
+        }
     }
 }
 
@@ -146,10 +213,10 @@ span {
 }
 
 main {
-  width: 1150px;
-    @include xl {
-      width: 100%;
-    }
+  width: 100%;
+    // @include xl {
+    //   width: 100%;
+    // }
 }
 
 .main__sections {
@@ -189,16 +256,23 @@ h3 {
   box-shadow: 10px 10px 30px $shadow_color;
   flex-direction: column;
   justify-content: space-between;
-  width: 350px;
+  width: 32%;
     @include xl {
       width: 32%;
     }
     @include lg {
       width: 32%;
     }
-    @include md {}
-    @include sm {}
-    @include xs {}
+    @include md {
+      flex-wrap: wrap;
+      // width: 50%;
+    }
+    @include sm {
+      // width: 98%;
+    }
+    @include xs {
+      // width: 98%;
+    }
 }
 
 .steps__article--1 p {
@@ -209,7 +283,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100%;
+  height: 80%;
   width: 80%;
 }
 
@@ -240,13 +314,16 @@ h5 {
   font-size: $bodySizeSmall;
   margin: 10px 0 0 0;
   text-align: center;
+  display: inline-block;
 }
 
 #friend-weekly-steps {
   font-size: $bodySizeMedium;
     li {
       color: #363636;
+
     }
+
 }
 
 .friend-1 span,
