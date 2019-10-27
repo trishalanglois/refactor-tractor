@@ -156,6 +156,64 @@ const stepTrends = $('#step-trends');
 const stepGoalChart = $('#step-goal-chart');
 const friendList = $('#friend-list');
 
+$(`.main__section--hydration`).on(`click`, () => {
+  event.preventDefault();
+  if (event.target.id === "activity-submit") {
+    fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData', {
+      method: 'POST',
+      headers: {
+              'Content-Type': 'application/json'
+        },
+      body: JSON.stringify({
+        userID: currentUserID,
+        date: $('#form__control--date1').val(),
+        numSteps: parseInt($('#form__control--steps').val()),
+        minutesActive: parseInt($('#form__control--minutes').val()),
+        flightsOfStairs: parseInt($('#form__control--stairs').val())
+      })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+    $('.form-control').val('');
+  } if (event.target.id === 'hydration-submit') {
+      fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userID: currentUserID,
+          date: $('#form__control--date2').val(),
+          numOunces: parseInt($('#form__control--water').val())
+        })
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+      $('.form-control').val('');
+    } if (event.target.id === 'sleep-submit') {
+        fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            userID: currentUserID,
+            date: $('#form__control--date3').val(),
+            hoursSlept: parseInt($('#form__control--hours').val()),
+            sleepQuality: parseInt($('#form__control--quality').val())
+          })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+        $('.form-control').val('');
+      } else {
+          return;
+        }
+})
+
 function updateUserDataDOM(userInfo) {
   $(`<p>Welcome,</p><h1 id='welcome-name'>${user.getFirstName()}</h1>`).prependTo(name);
   address.text(userInfo.address);
