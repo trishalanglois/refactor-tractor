@@ -32,18 +32,18 @@ let hydrationData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydr
 
 let activityData = fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData').then(response => response.json()).then(json => json.activityData);
 
-$('.splash__input--user').keyup((e) => {
+$('#splash__input--user').keyup((e) => {
   e.preventDefault();
-  if ($('.splash__input--user').val() !== '') {
+  if ($('#splash__input--user').val() !== '') {
     $('.splash__button').prop('disabled', false);
   }
-})
+});
 
 let stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
 
 $('.splash__button').on('click', (e) => {
   e.preventDefault();
-  currentUserID = parseInt($('.splash__input--user').val());
+  currentUserID = parseInt($('#splash__input--user').val());
   stats = new Stats(userData, currentUserID);
   userRepository = new UserRepository(userData, currentUserID);
   hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
@@ -91,7 +91,7 @@ $('#splash__input--user').keyup((e) => {
   if ($('#splash__input--user').val() !== '') {
     $('.splash__button').prop('disabled', false);
   }
-})
+});
 
 $('.splash__button').on('click', (e) => {
   $('.addActivity__article').hide();
