@@ -86,9 +86,9 @@ $('nav').hide()
 $('header').hide()
 $('main').hide()
 
-$('.splash__input--user').keyup((e) => {
+$('#splash__input--user').keyup((e) => {
   e.preventDefault();
-  if ($('.splash__input--user').val() !== '') {
+  if ($('#splash__input--user').val() !== '') {
     $('.splash__button').prop('disabled', false);
   }
 })
