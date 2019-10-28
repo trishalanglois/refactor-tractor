@@ -154,7 +154,8 @@ const friendList = $('#friend-list');
 
 $(`.main__section--hydration`).on(`click`, () => {
   event.preventDefault();
-  if (event.target.id === "activity-submit") {
+  if (event.target.id === 'activity-submit') {
+    validateForm('activity-submit');
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData', {
       method: 'POST',
       headers: {
@@ -173,6 +174,7 @@ $(`.main__section--hydration`).on(`click`, () => {
     .catch(err => console.log(err));
     $('.form-control').val('');
   } if (event.target.id === 'hydration-submit') {
+      validateForm('hydration-submit');
       fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData', {
         method: 'POST',
         headers: {
@@ -189,6 +191,7 @@ $(`.main__section--hydration`).on(`click`, () => {
       .catch(err => console.log(err));
       $('.form-control').val('');
     } if (event.target.id === 'sleep-submit') {
+        validateForm('sleep-submit');
         fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
           method: 'POST',
           headers: {
@@ -205,10 +208,18 @@ $(`.main__section--hydration`).on(`click`, () => {
         .then(data => console.log(data.message))
         .catch(err => console.log(err));
         $('.form-control').val('');
-      } else {
-          return;
-        }
+      }
 })
+
+function validateForm(id) {
+  let children = Array.from($(`#${id}`).parent().children().children());
+  console.log(children);
+  children.forEach((child) => {
+    if ($(`#${child.id}`).is('input') && $(`#${child.id}`).val() === '') {
+      $(`#${child.id}`).css('border', '2px solid red');
+    }
+  });
+}
 
 function updateUserDataDOM(userInfo) {
   $(`<p>Welcome,</p><h1 id='welcome-name'>${user.getFirstName()}</h1>`).prependTo(name);
