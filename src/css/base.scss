@@ -301,7 +301,7 @@ p {
 }
 
 .hydration__article--1 p {
-  margin-bottom: 25px;
+  margin: 3%;
 }
 
 .hydration__article--1 span,
@@ -372,6 +372,7 @@ h4 {
 }
 
 .man-icon {
+  height: min-intrinsic;
   width: 400px;
 }
 
