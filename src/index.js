@@ -228,7 +228,10 @@ function validateForm(id) {
     } if (validated === false) {
       let error = $(`#${event.target.id}`).siblings('p')[0].id;
       $(`#${error}`).show();
-      console.log(error);
+      $(`#${error}`).css({
+        'font-size': '.8em',
+        color: 'red'
+      });
     }
   });
   return validated;
