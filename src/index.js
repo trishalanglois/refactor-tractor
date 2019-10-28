@@ -41,21 +41,31 @@ $('#splash__input--user').keyup((e) => {
 
 let stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
 
-$('.splash__button').on('click', (e) => {
+$('.splash__form--user').on('submit', (e) => {
   e.preventDefault();
-  currentUserID = parseInt($('#splash__input--user').val());
-  stats = new Stats(userData, currentUserID);
-  userRepository = new UserRepository(userData, currentUserID);
-  hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
-  sleepRepository = new SleepRepository(sleepData, currentUserID);
-  activityRepository = new ActivityRepository(activityData, currentUserID);
-  user = new User(userRepository.getUserData());
-  $('.splash__container').hide();
-  $('nav').show();
-  $('header').show();
-  $('main').show();
-  startApp()
-});
+  if ($('#splash__input--user').val() === '') {
+    $('.splash__button').prop('disabled', true);
+    $('#splash__input--user').css('borderColor', 'red');
+  } else {
+    currentUserID = parseInt($('#splash__input--user').val());
+    stats = new Stats(userData, currentUserID);
+    userRepository = new UserRepository(userData, currentUserID);
+    hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
+    sleepRepository = new SleepRepository(sleepData, currentUserID);
+    activityRepository = new ActivityRepository(activityData, currentUserID);
+    user = new User(userRepository.getUserData());
+    $('.addActivity__article').hide();
+    $('.splash__container').hide();
+    $('.addHydration__article').hide();
+    $('.addSleep__article').hide();
+    $('.splash__container').hide();
+    $('nav').show();
+    $('header').show();
+    $('main').show();
+    startApp()
+  }
+})
+
 
 Promise.all([userData, sleepData, hydrationData, activityData])
 .then(data => {
@@ -86,23 +96,6 @@ $('nav').hide()
 $('header').hide()
 $('main').hide()
 
-$('#splash__input--user').keyup((e) => {
-  e.preventDefault();
-  if ($('#splash__input--user').val() !== '') {
-    $('.splash__button').prop('disabled', false);
-  }
-});
-
-$('.splash__button').on('click', (e) => {
-  $('.addActivity__article').hide();
-  $('.splash__container').hide();
-  $('.addHydration__article').hide();
-  $('.addSleep__article').hide();
-  $('nav').show();
-  $('header').show();
-  $('main').show();
-  e.preventDefault();
-});
 
 $('.section__btn--activity').on('click', () => {
   $('.placeholder__article').hide()
