@@ -36,6 +36,7 @@ $('#splash__input--user').keyup((e) => {
   e.preventDefault();
   if ($('#splash__input--user').val() !== '') {
     $('.splash__button').prop('disabled', false);
+    $('#splash__input--user').css('border', 'none');
   }
 });
 
@@ -43,9 +44,9 @@ let stats, userRepository, hydrationRepository, sleepRepository, activityReposit
 
 $('.splash__form--user').on('submit', (e) => {
   e.preventDefault();
-  if ($('#splash__input--user').val() === '') {
+  if (!$('#splash__input--user').val()) {
     $('.splash__button').prop('disabled', true);
-    $('#splash__input--user').css('borderColor', 'red');
+    $('#splash__input--user').css('border', ' 2px solid red');
   } else {
     currentUserID = parseInt($('#splash__input--user').val());
     stats = new Stats(userData, currentUserID);
