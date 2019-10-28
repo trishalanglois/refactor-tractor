@@ -37,6 +37,7 @@ $('#splash__input--user').keyup((e) => {
   if ($('#splash__input--user').val() !== '') {
     $('.splash__button').prop('disabled', false);
     $('#splash__input--user').css('border', 'none');
+    $('#input-error-msg').hide();
   }
 });
 
@@ -47,6 +48,7 @@ $('.splash__form--user').on('submit', (e) => {
   if (!$('#splash__input--user').val()) {
     $('.splash__button').prop('disabled', true);
     $('#splash__input--user').css('border', ' 2px solid red');
+    $('#input-error-msg').show();
   } else {
     currentUserID = parseInt($('#splash__input--user').val());
     stats = new Stats(userData, currentUserID);
