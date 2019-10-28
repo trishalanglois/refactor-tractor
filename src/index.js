@@ -213,6 +213,9 @@ $(`.main__section--hydration`).on(`click`, () => {
 
 $(`.main__section--hydration`).on(`keyup`, () => {
   $(`#${event.target.id}`).css('border', '1px solid grey');
+  if (validateForm(`${event.target.id}`)) {
+    $('.main-error').hide();
+  }
 })
 
 function validateForm(id) {
@@ -222,6 +225,10 @@ function validateForm(id) {
     if ($(`#${child.id}`).is('input') && $(`#${child.id}`).val() === '') {
       $(`#${child.id}`).css('border', '2px solid red');
       validated = false;
+    } if (validated === false) {
+      let error = $(`#${event.target.id}`).siblings('p')[0].id;
+      $(`#${error}`).show();
+      console.log(error);
     }
   });
   return validated;
