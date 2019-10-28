@@ -211,6 +211,10 @@ $(`.main__section--hydration`).on(`click`, () => {
       }
 })
 
+$(`.main__section--hydration`).on(`keyup`, () => {
+  $(`#${event.target.id}`).css('border', '1px solid grey');
+})
+
 function validateForm(id) {
   let validated = true;
   let children = Array.from($(`#${id}`).parent().children().children());
