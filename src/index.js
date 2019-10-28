@@ -173,7 +173,7 @@ $(`.main__section--hydration`).on(`click`, () => {
       })
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => console.log(data.message))
     .catch(err => console.log(err));
     $('.form-control').val('');
   } if (event.target.id === 'hydration-submit') {
@@ -189,7 +189,7 @@ $(`.main__section--hydration`).on(`click`, () => {
         })
       })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => console.log(data.message))
       .catch(err => console.log(err));
       $('.form-control').val('');
     } if (event.target.id === 'sleep-submit') {
@@ -206,7 +206,7 @@ $(`.main__section--hydration`).on(`click`, () => {
           })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => console.log(data.message))
         .catch(err => console.log(err));
         $('.form-control').val('');
       } else {
