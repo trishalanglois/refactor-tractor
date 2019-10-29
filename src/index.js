@@ -214,23 +214,28 @@ $(`.main__section--hydration`).on(`click`, () => {
 $(`.main__section--hydration`).on(`keyup`, () => {
   let id = $(`#${event.target.id}`).parent().parent().children('p')[0].id
   $(`#${event.target.id}`).css('border', '1px solid grey');
-  $(`#${id}`).hide();
+  // if (validateForm(`${id}`)) {
+  //   $(`#${id}`).hide();
+  // }
 })
 
 function validateForm(id) {
   let validated = true;
+  let error = $(`#${event.target.id}`).siblings('p')[0].id;
   let children = Array.from($(`#${id}`).parent().children().children());
   children.forEach((child) => {
     if ($(`#${child.id}`).is('input') && $(`#${child.id}`).val() === '') {
       $(`#${child.id}`).css('border', '2px solid red');
       validated = false;
-    } if (validated === false) {
-      let error = $(`#${event.target.id}`).siblings('p')[0].id;
+    }
+    if (validated === false) {
       $(`#${error}`).show();
       $(`#${error}`).css({
         'font-size': '.8em',
         color: 'red'
       });
+    } else {
+        $(`#${error}`).hide();
     }
   });
   return validated;
