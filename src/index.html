@@ -12,8 +12,10 @@
     <form class="splash__form--user">
       <label for="splash__input--user" class ="splash__label--user">Enter Your ID</label>
       <input id="splash__input--user" placeholder="User ID" type="number" maxlength="2">
-      <button class="splash__button" type="submit" disabled>Enter</button>
-    </form>
+      </label>
+      <p id="input-error-msg">Please fill out the required fields.</p>
+      <button class="splash__button" type="submit" >Enter</button>
+      </form>
   </section>
   <nav>
     <h1>FitLit</h1>
@@ -41,7 +43,7 @@
           <p>To enter your information into the FitLit activity tracker please select the categories button above</p>
         </article>
       <article class="addActivity__article">
-        <form>
+        <form id="activity-form">
           <label for="form__control--date1">Date
           <input class="form-control" aria-required="true" id="form__control--date1" type="text" name="date" placeholder="YYYY/DD/MM">
           </label>
@@ -54,22 +56,24 @@
           <label for="form__control--stairs">Flights of Stairs
           <input class="form-control" aria-required="true" id="form__control--stairs" type="number" name="number" pattern="/^[0-9]+$/" min="1.0" max="500" placeholder="#">
           </label>
+          <p class="main-error" id="activity-error">Please fill out the required fields</p>
           <button id="activity-submit" type="submit">Submit</button>
         </form>
       </article>
       <article class="addHydration__article">
-        <form>
+        <form id="hyrdation-form">
             <label for="form__control--date2">Date
             <input class="form-control" aria-required="true" id="form__control--date2" type="text" name="date" placeholder="YYYY/DD/MM">
             </label>
             <label for="form__control--water">Ounces of Water Drank
             <input class="form-control" aria-required="true" id="form__control--water" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="200" placeholder="#">
             </label>
+            <p class="main-error" id="hydration-error">Please fill out the required fields</p>
             <button id="hydration-submit" type="submit">Submit</button>
           </form>
       </article>
       <article class="addSleep__article">
-        <form>
+        <form id="sleep-form">
             <label for="form__control--date3">Date
             <input class="form-control" aria-required="true" id="form__control--date3" type="text" name="date" placeholder="YYYY/DD/MM">
             </label>
@@ -79,6 +83,7 @@
             <label for="form__control--quality">Quality of Hours Slept
             <input class="form-control" aria-required="true" id="form__control--quality" type="number" name="number" pattern="[-+]?[0-9]*[.,]?[0-9]+" step=0.01 min="1" max="10" placeholder="#">
             </label>
+            <p id="sleep-error">Please fill out the required fields</p>
             <button id="sleep-submit" type="submit">Submit</button>
           </form>
       </article>

@@ -36,26 +36,39 @@ $('#splash__input--user').keyup((e) => {
   e.preventDefault();
   if ($('#splash__input--user').val() !== '') {
     $('.splash__button').prop('disabled', false);
+    $('#splash__input--user').css('border', 'none');
+    $('#input-error-msg').hide();
   }
 });
 
 let stats, userRepository, hydrationRepository, sleepRepository, activityRepository, user;
 
-$('.splash__button').on('click', (e) => {
+$('.splash__form--user').on('submit', (e) => {
   e.preventDefault();
-  currentUserID = parseInt($('#splash__input--user').val());
-  stats = new Stats(userData, currentUserID);
-  userRepository = new UserRepository(userData, currentUserID);
-  hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
-  sleepRepository = new SleepRepository(sleepData, currentUserID);
-  activityRepository = new ActivityRepository(activityData, currentUserID);
-  user = new User(userRepository.getUserData());
-  $('.splash__container').hide();
-  $('nav').show();
-  $('header').show();
-  $('main').show();
-  startApp()
-});
+  if (!$('#splash__input--user').val()) {
+    $('.splash__button').prop('disabled', true);
+    $('#splash__input--user').css('border', ' 2px solid red');
+    $('#input-error-msg').show();
+  } else {
+    currentUserID = parseInt($('#splash__input--user').val());
+    stats = new Stats(userData, currentUserID);
+    userRepository = new UserRepository(userData, currentUserID);
+    hydrationRepository = new HydrationRepository(hydrationData, currentUserID);
+    sleepRepository = new SleepRepository(sleepData, currentUserID);
+    activityRepository = new ActivityRepository(activityData, currentUserID);
+    user = new User(userRepository.getUserData());
+    $('.addActivity__article').hide();
+    $('.splash__container').hide();
+    $('.addHydration__article').hide();
+    $('.addSleep__article').hide();
+    $('.splash__container').hide();
+    $('nav').show();
+    $('header').show();
+    $('main').show();
+    startApp()
+  }
+})
+
 
 Promise.all([userData, sleepData, hydrationData, activityData])
 .then(data => {
@@ -86,23 +99,6 @@ $('nav').hide()
 $('header').hide()
 $('main').hide()
 
-$('#splash__input--user').keyup((e) => {
-  e.preventDefault();
-  if ($('#splash__input--user').val() !== '') {
-    $('.splash__button').prop('disabled', false);
-  }
-});
-
-$('.splash__button').on('click', (e) => {
-  $('.addActivity__article').hide();
-  $('.splash__container').hide();
-  $('.addHydration__article').hide();
-  $('.addSleep__article').hide();
-  $('nav').show();
-  $('header').show();
-  $('main').show();
-  e.preventDefault();
-});
 
 $('.section__btn--activity').on('click', () => {
   $('.placeholder__article').hide()
@@ -158,7 +154,8 @@ const friendList = $('#friend-list');
 
 $(`.main__section--hydration`).on(`click`, () => {
   event.preventDefault();
-  if (event.target.id === "activity-submit") {
+  if (event.target.id === 'activity-submit') {
+    validateForm('activity-submit');
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData', {
       method: 'POST',
       headers: {
@@ -173,10 +170,11 @@ $(`.main__section--hydration`).on(`click`, () => {
       })
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => console.log(data.message))
     .catch(err => console.log(err));
-    $('.form-control').val('');
+    clearInputs('activity-submit');
   } if (event.target.id === 'hydration-submit') {
+      validateForm('hydration-submit');
       fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData', {
         method: 'POST',
         headers: {
@@ -189,10 +187,11 @@ $(`.main__section--hydration`).on(`click`, () => {
         })
       })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => console.log(data.message))
       .catch(err => console.log(err));
-      $('.form-control').val('');
+      clearInputs('hydration-submit');
     } if (event.target.id === 'sleep-submit') {
+        validateForm('sleep-submit');
         fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
           method: 'POST',
           headers: {
@@ -206,13 +205,43 @@ $(`.main__section--hydration`).on(`click`, () => {
           })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => console.log(data.message))
         .catch(err => console.log(err));
-        $('.form-control').val('');
-      } else {
-          return;
-        }
+        clearInputs('sleep-submit');
+      }
 })
+
+$(`.main__section--hydration`).on(`keyup`, () => {
+  $(`#${event.target.id}`).css('border', '1px solid grey');
+})
+
+function validateForm(id) {
+  let validated = true;
+  let error = $(`#${event.target.id}`).siblings('p')[0].id;
+  let children = Array.from($(`#${id}`).parent().children().children());
+  children.forEach((child) => {
+    if ($(`#${child.id}`).is('input') && $(`#${child.id}`).val() === '') {
+      $(`#${child.id}`).css('border', '2px solid red');
+      validated = false;
+    }
+    if (validated === false) {
+      $(`#${error}`).show();
+      $(`#${error}`).css({
+        'font-size': '.8em',
+        color: 'red'
+      });
+    } else {
+        $(`#${error}`).hide();
+    }
+  });
+  return validated;
+}
+
+function clearInputs(id) {
+  if (validateForm(id)) {
+    $('.form-control').val('');
+  }
+}
 
 function updateUserDataDOM(userInfo) {
   $(`<p>Welcome,</p><h1 id='welcome-name'>${user.getFirstName()}</h1>`).prependTo(name);
