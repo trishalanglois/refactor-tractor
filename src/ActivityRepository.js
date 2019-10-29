@@ -21,8 +21,8 @@ class ActivityRepository extends Stats {
     if (measurement === 'miles') {
       return parseFloat(miles.toFixed(1));
     } else {
-        return parseFloat(kilometers.toFixed(1));
-      }
+      return parseFloat(kilometers.toFixed(1));
+    }
   }
 
   getMinutesActive(date) {
