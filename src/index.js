@@ -214,9 +214,6 @@ $(`.main__section--hydration`).on(`click`, () => {
 $(`.main__section--hydration`).on(`keyup`, () => {
   let id = $(`#${event.target.id}`).parent().parent().children('p')[0].id
   $(`#${event.target.id}`).css('border', '1px solid grey');
-  // if (validateForm(`${id}`)) {
-  //   $(`#${id}`).hide();
-  // }
 })
 
 function validateForm(id) {
