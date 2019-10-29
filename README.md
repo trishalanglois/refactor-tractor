@@ -40,3 +40,13 @@ view, track, and see trends of your sleep over all of time or more recently alon
     1. Clone and/or fork the repo.
     2. Run `npm install`.
     3. To launch, `npm run start` or `npm start` and copy the provided `localhost` url into your browser.
+
+### Known Bugs/Issues
+
+  - When adding data in one of the forms on the main page an error message will display if you try to submit the form without filling out all of the fields. This error message will not go away until the missing fields are filled out **and** the form is submitted. The error should go away when all inputs are filled out but before the form is submitted.
+
+  - If a form element on the main page is highlighted because it was not filled out, entering an invalid character will cause the error highlighting to disappear. This should only happen if the input is valid.
+
+  - This app is not fully optimized for smaller screen sizes and you may experience issues when viewing on a smaller screen or window.
+
+  - Our charts are not fully color blind accessible.
