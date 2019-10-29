@@ -58,13 +58,13 @@ $('.splash__button').on('click', (e) => {
 });
 
 Promise.all([userData, sleepData, hydrationData, activityData])
-.then(data => {
-  userData = data[0];
-  sleepData = data[1];
-  hydrationData = data[2];
-  activityData = data[3];
-})
-.catch(error => console.log(error))
+  .then(data => {
+    userData = data[0];
+    sleepData = data[1];
+    hydrationData = data[2];
+    activityData = data[3];
+  })
+  .catch(error => console.log(error))
 
 function startApp() {
   updateUserDataDOM(userRepository.getUserData());
@@ -162,8 +162,8 @@ $(`.main__section--hydration`).on(`click`, () => {
     fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/activity/activityData', {
       method: 'POST',
       headers: {
-              'Content-Type': 'application/json'
-        },
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         userID: currentUserID,
         date: $('#form__control--date1').val(),
@@ -172,46 +172,46 @@ $(`.main__section--hydration`).on(`click`, () => {
         flightsOfStairs: parseInt($('#form__control--stairs').val())
       })
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
-    $('.form-control').val('');
-  } if (event.target.id === 'hydration-submit') {
-      fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          userID: currentUserID,
-          date: $('#form__control--date2').val(),
-          numOunces: parseInt($('#form__control--water').val())
-        })
-      })
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.log(err));
-      $('.form-control').val('');
-    } if (event.target.id === 'sleep-submit') {
-        fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            userID: currentUserID,
-            date: $('#form__control--date3').val(),
-            hoursSlept: parseInt($('#form__control--hours').val()),
-            sleepQuality: parseInt($('#form__control--quality').val())
-          })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
-        $('.form-control').val('');
-      } else {
-          return;
-        }
+    $('.form-control').val('');
+  } if (event.target.id === 'hydration-submit') {
+    fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/hydration/hydrationData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+      userID: currentUserID,
+      date: $('#form__control--date2').val(),
+      numOunces: parseInt($('#form__control--water').val())
+      })
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+    $('.form-control').val('');
+  } if (event.target.id === 'sleep-submit') {
+    fetch('https://fe-apps.herokuapp.com/api/v1/fitlit/1908/sleep/sleepData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+      userID: currentUserID,
+      date: $('#form__control--date3').val(),
+      hoursSlept: parseInt($('#form__control--hours').val()),
+      sleepQuality: parseInt($('#form__control--quality').val())
+      })
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+    $('.form-control').val('');
+    } else {
+      return;
+  }
 })
 
 function updateUserDataDOM(userInfo) {
@@ -336,7 +336,7 @@ function displayActivity() {
 }
 
 function displayAverageWeeklyActivity() {
-  const averageStairsDay = activityRepository.getAverageDay(getCurrentDate(),'flightsOfStairs');
+  const averageStairsDay = activityRepository.getAverageDay(getCurrentDate(), 'flightsOfStairs');
   const averageStepsDay = activityRepository.getAverageDay(getCurrentDate(), 'numSteps');
   const averageMinutesDay = activityRepository.getAverageDay(getCurrentDate(), 'minutesActive');
   const getDailyFlights = activityRepository.getDailyStats(getCurrentDate(), 'flightsOfStairs');
