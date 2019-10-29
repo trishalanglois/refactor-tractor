@@ -6,20 +6,21 @@ describe('Stats', () => {
 
   beforeEach(() => {
     data = [
-        {
-          "id": 1,
-          "name": "Luisa Hane",
-          "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-          "email": "Diana.Hayes1@hotmail.com",
-          "strideLength": 4.3,
-          "dailyStepGoal": 10000,
-          "friends": [
-            16,
-            4,
-            8
-          ]
-        }
-       ];
+      {
+        "id": 1,
+        "name": "Luisa Hane",
+        "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+        "email": "Diana.Hayes1@hotmail.com",
+        "strideLength": 4.3,
+        "dailyStepGoal": 10000,
+        "friends": [
+          16,
+          4,
+          8
+        ]
+      }
+    ];
+    
     data2 =
     [
       { "userID": 13, "date": "2019/08/18", "numSteps": 1242, "minutesActive": 64, "flightsOfStairs": 16 },
