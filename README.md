@@ -33,3 +33,10 @@ view, track, and see trends of your sleep over all of time or more recently alon
     2. How much over or under the average you are vs. all users in steps, minutes active, and flights of stairs for the day.
     3. You activity per day over the past week.
 **// Add screenshot 5 here//**
+
+### Setup
+
+- To run locally:
+    1. Clone and/or fork the repo.
+    2. Run `npm install`.
+    3. To launch, `npm run start` or `npm start` and copy the provided `localhost` url into your browser.
