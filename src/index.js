@@ -229,8 +229,8 @@ function compareStepGoal(userInfo) {
   const stepsToday = activityRepository.getDailyStats(getCurrentDate(), 'numSteps');
   const numSteps = Math.abs(dailyStepGoal - stepsToday);
   stepsToday <= dailyStepGoal
-    ? stepCompare.append(`<h5>${numSteps.toLocaleString()} steps until you reach your goal!</h5>`)
-    : stepCompare.append(`<h5>You've reached your daily goal!<h5>`)
+    ? stepCompare.append(`<p>${numSteps.toLocaleString()} steps until you reach your goal!</p>`)
+    : stepCompare.append(`<p>You've reached your daily goal!<p>`)
 
   new Chart(stepGoalChart, {
     type: 'doughnut',
@@ -250,7 +250,7 @@ function compareStepGoal(userInfo) {
 
 function displayDailyOz() {
   const waterDrank = hydrationRepository.totalOzDay(getCurrentDate());
-  $(`<h5>You have drank <span>${waterDrank}</span> oz today!</h5>`).appendTo(dailyOz);
+  $(`<p>You have drank <span>${waterDrank}</span> oz today!</p>`).appendTo(dailyOz);
 }
 
 function displayWeeklyOz() {
@@ -282,11 +282,11 @@ function displaySleep() {
   const lastNightSleep = sleepRepository.getDailySleepHours(getCurrentDate());
   const avgWeeklySleep = sleepRepository.weeklyAvgHours(getCurrentDate());
 
-  $(`<h5>You slept <span>${lastNightSleep}</span> hours last night!</h5>`).appendTo(yesterdaySleep);
-  $(`<h5>You slept an average of <span>${avgWeeklySleep}</span> hours a night this week!</h5>`).appendTo(yesterdaySleep);
-  $(`<h5>Avg. Hours Slept : <span>${userLogsHours}</span></h5>`).appendTo(allTimeSleep);
-  $(`<h5>Avg. Sleep Quality : <span>${userLogsQuality}</span></h5>`).appendTo(allTimeSleep);
-  $(`<h5><span>${displayBestSleepers()}</span> great sleepers this week!</h5>`).appendTo(allTimeSleep);
+  $(`<p>You slept <span>${lastNightSleep}</span> hours last night!</p>`).appendTo(yesterdaySleep);
+  $(`<p>You slept an average of <span>${avgWeeklySleep}</span> hours a night this week!</p>`).appendTo(yesterdaySleep);
+  $(`<p>Avg. Hours Slept : <span>${userLogsHours}</span></p>`).appendTo(allTimeSleep);
+  $(`<p>Avg. Sleep Quality : <span>${userLogsQuality}</span></p>`).appendTo(allTimeSleep);
+  $(`<p><span>${displayBestSleepers()}</span> great sleepers this week!</p>`).appendTo(allTimeSleep);
 }
 
 function displaySleepChart() {
@@ -330,9 +330,9 @@ function displayActivity() {
   const milesWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'miles');
   const kmWalked = activityRepository.getDistanceWalked(getCurrentDate(), userRepository.getUserData(), 'kilometers');
 
-  $(`<h5>•<span>${avgStepsDay.toLocaleString()}</span> STEPS</h5>`).appendTo(dailyActivity);
-  $(`<h5>•ACTIVE <span>${avgMinsDay}</span> MINS</h5>`).appendTo(dailyActivity);
-  $(`<h5>•WALKED <span>${milesWalked}</span> MILES / <span>${kmWalked}</span> KM</h5>`).appendTo(dailyActivity);
+  $(`<p>•<span>${avgStepsDay.toLocaleString()}</span> STEPS</p>`).appendTo(dailyActivity);
+  $(`<p>•ACTIVE <span>${avgMinsDay}</span> MINS</p>`).appendTo(dailyActivity);
+  $(`<p>•WALKED <span>${milesWalked}</span> MILES / <span>${kmWalked}</span> KM</p>`).appendTo(dailyActivity);
 }
 
 function displayAverageWeeklyActivity() {
@@ -344,9 +344,9 @@ function displayAverageWeeklyActivity() {
   const getDailyMinutes = activityRepository.getDailyStats(getCurrentDate(), 'minutesActive');
   const status = (personal, avg) => personal > avg ? 'over' : 'under';
 
-  $(`<h5>•<span>${Math.abs(averageStepsDay - getDailySteps).toLocaleString()}</span> steps ${status(averageStepsDay, getDailySteps)} the avg</h5>`).appendTo(compareActivity);
-  $(`<h5>•<span>${Math.abs(averageMinutesDay - getDailyMinutes)}</span> mins ${status(averageMinutesDay, getDailyMinutes)} the avg</h5>`).appendTo(compareActivity);
-  $(`<h5>•<span>${Math.abs(averageStairsDay - getDailyFlights)}</span> stair flights ${status(averageStairsDay, getDailyFlights)} the avg</h5>`).appendTo(compareActivity);
+  $(`<p>•<span>${Math.abs(averageStepsDay - getDailySteps).toLocaleString()}</span> steps ${status(averageStepsDay, getDailySteps)} the avg</p>`).appendTo(compareActivity);
+  $(`<p>•<span>${Math.abs(averageMinutesDay - getDailyMinutes)}</span> mins ${status(averageMinutesDay, getDailyMinutes)} the avg</p>`).appendTo(compareActivity);
+  $(`<p>•<span>${Math.abs(averageStairsDay - getDailyFlights)}</span> stair flights ${status(averageStairsDay, getDailyFlights)} the avg</p>`).appendTo(compareActivity);
 }
 
 function displayWeeklyActivity() {
