@@ -3,7 +3,6 @@ import spies from 'chai-spies';
 chai.use(spies);
 
 import SleepRepository from '../src/SleepRepository';
-import Stats from '../src/Stats';
 
 let dataSleep, dataSleep2, sleepRepository, sleepRepository2;
 
@@ -70,7 +69,6 @@ describe('SleepRepository', () => {
   it('should be able to filter the user"s data by ID', () => {
     chai.spy.on(sleepRepository, 'getData', () => [{}]);
     sleepRepository.getSleepData();
-    // expect(sleepRepository.getData).to.have.been.called(1);
     expect(sleepRepository.user).to.deep.equal(
       [
         { userID: 45, date: "2019/08/16", hoursSlept: 9.9, sleepQuality: 2.8 },
