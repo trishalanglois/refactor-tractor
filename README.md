@@ -7,10 +7,10 @@ view, track, and see trends over all of time or more recently along with the som
 ### How To Use
 
 - Once you are on the splash page of the site you can enter your user ID and then be signed in and taken to the homepage where you will see a panel style layout. The first section under the title will list your account information and the current date.
-**// Add screenshot 1 here //**
+https://user-images.githubusercontent.com/47998896/67820018-2e878480-fa7d-11e9-8ce5-32cda31ab41a.png
 
 - Just below that you will see the form section where you can submit your data for the day by choosing one of the three tabs and submitting the form that appears.
-**// Add screenshot two here //**
+https://user-images.githubusercontent.com/47998896/67820038-40692780-fa7d-11e9-9511-38e7752c4845.png
 
 - The Steps section will show you:
     1. If you have hit your step goal for today and a chart comparing your step goal vs. the average step goal amongst all users. You can hover over each section of the chart to display specific numbers for each.
@@ -20,19 +20,19 @@ view, track, and see trends over all of time or more recently along with the som
 - The Hydration section will show you:
     1. How many ounces of water you drank today.
     2. A bar graph showing your water consumption (oz.) for each day in the previous week.
-**// Add screenshot 3 here //**
+https://user-images.githubusercontent.com/47998896/67820047-4bbc5300-fa7d-11e9-85db-0b34671781d0.png
 
 - The Sleep section will show you:
     1. The amount of sleep you got last night and your average for the week.
     2. A chart showing your sleep quality and amount for each day over the past week.
     3. Your all time daily average for hours slept and sleep quality and your sleep ranking for the week.
-**// Add screenshot 4 here//**
+https://user-images.githubusercontent.com/47998896/67820062-570f7e80-fa7d-11e9-93d5-0a97d6dc6264.png
 
 - The Activity section will show you:
     1. Activity today (steps, minutes active, and distance walked in miles and kilometers).
     2. How much over or under the average you are vs. all users in steps, minutes active, and flights of stairs for the day.
     3. You activity per day over the past week.
-**// Add screenshot 5 here//**
+https://user-images.githubusercontent.com/47998896/67820067-62fb4080-fa7d-11e9-9c6a-9b2d47fcbe2e.png
 
 ### Setup
 
