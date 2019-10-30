@@ -50,3 +50,10 @@ view, track, and see trends of your sleep over all of time or more recently alon
   - This app is not fully optimized for smaller screen sizes and you may experience issues when viewing on a smaller screen or window.
 
   - Our charts are not fully color blind accessible.
+
+#### Contributors
+
+  - @trishalanglois
+  - @allisonjw
+  - @cammac60
+  - Comp/Setup created by @turingschool
