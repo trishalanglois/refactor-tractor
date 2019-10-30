@@ -49,7 +49,7 @@ view, track, and see trends over all of time or more recently along with the som
 
   - This app is not fully optimized for smaller screen sizes and you may experience issues when viewing on a smaller screen or window.
 
-  - Our charts are not fully color blind accessible.
+  - A future iteration to make our charts even more readable by someone who has color blindness would be to add a pattern to each individual part of the graph. At this point, the charts are readable by people who have color blindness, but we want to make the visual look even more differentiated.
 
 #### Contributors
 
