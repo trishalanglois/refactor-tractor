@@ -3,7 +3,7 @@
 ### Overview
 
 FitLit is meant to help you track your historical health in 3 main categories; Activity, Hydration, and Sleep. You can
-view, track, and see trends of your sleep over all of time or more recently along with the some of the data of your friends.
+view, track, and see trends over all of time or more recently along with the some of the data of your friends.
 ### How To Use
 
 - Once you are on the splash page of the site you can enter your user ID and then be signed in and taken to the homepage where you will see a panel style layout. The first section under the title will list your account information and the current date.
