@@ -1,5 +1,6 @@
-const chai = require('chai');
-const expect = chai.expect;
+import chai, {expect} from 'chai';
+import spies from 'chai-spies';
+chai.use(spies);
 
 import SleepRepository from '../src/SleepRepository';
 
@@ -66,7 +67,9 @@ describe('SleepRepository', () => {
   });
 
   it('should be able to filter the user"s data by ID', () => {
-    expect(sleepRepository.getSleepData()).to.deep.equal(
+    chai.spy.on(sleepRepository, 'getData', () => [{}]);
+    sleepRepository.getSleepData();
+    expect(sleepRepository.user).to.deep.equal(
       [
         { userID: 45, date: "2019/08/16", hoursSlept: 9.9, sleepQuality: 2.8 },
         { userID: 45, date: "2019/08/17", hoursSlept: 6.9, sleepQuality: 4.5 },
@@ -82,6 +85,9 @@ describe('SleepRepository', () => {
   });
 
   it('should return the user"s average number of hours slept per day', () => {
+    chai.spy.on(sleepRepository, 'getAllTimeAvg', () => 8.6);
+    sleepRepository.getAllTimeAvg();
+    expect(sleepRepository.getAllTimeAvg).to.have.been.called(1);
     expect(sleepRepository.getAllTimeAvg('hoursSlept')).to.equal(8.6);
   });
 

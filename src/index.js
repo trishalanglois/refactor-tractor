@@ -183,9 +183,9 @@ $(`.main__section--hydration`).on(`click`, () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-      userID: currentUserID,
-      date: $('#form__control--date2').val(),
-      numOunces: parseInt($('#form__control--water').val())
+        userID: currentUserID,
+        date: $('#form__control--date2').val(),
+        numOunces: parseInt($('#form__control--water').val())
       })
     })
       .then(response => response.json())
@@ -199,18 +199,18 @@ $(`.main__section--hydration`).on(`click`, () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-      userID: currentUserID,
-      date: $('#form__control--date3').val(),
-      hoursSlept: parseInt($('#form__control--hours').val()),
-      sleepQuality: parseInt($('#form__control--quality').val())
+        userID: currentUserID,
+        date: $('#form__control--date3').val(),
+        hoursSlept: parseInt($('#form__control--hours').val()),
+        sleepQuality: parseInt($('#form__control--quality').val())
       })
     })
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.log(err));
     $('.form-control').val('');
-    } else {
-      return;
+  } else {
+    return;
   }
 })
 
